@@ -74320,7 +74320,7 @@ textarea.form-control, textarea.form-select, textarea.dd-handle {
   -ms-flex-pack: center;
   position: absolute;
   z-index: 5;
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem 0rem;
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
@@ -74338,7 +74338,7 @@ textarea.form-control, textarea.form-select, textarea.dd-handle {
 }
 .input-affix-wrapper .form-control:not(:last-child), .input-affix-wrapper .form-select:not(:last-child), .input-affix-wrapper .wizard > .content > .body input:not(:last-child), .wizard > .content > .body .input-affix-wrapper input:not(:last-child), .input-affix-wrapper .dd-handle:not(:last-child),
 .input-affix-wrapper .form-select:not(:last-child) {
-  padding-right: 2.5rem;
+  /*padding-right: 2.5rem;*/
 }
 .input-affix-wrapper.input-affix-wrapper-sm .input-prefix,
 .input-affix-wrapper.input-affix-wrapper-sm .input-suffix {
@@ -81829,6 +81829,7 @@ Project:	Jampack
 }
 .hk-wrapper .hk-navbar .navbar-nav .nav-item .dropdown .dropdown-menu, .hk-wrapper .hk-navbar .navbar-nav .nav-item .dropdown .apexcharts-toolbar .apexcharts-menu, .apexcharts-toolbar .hk-wrapper .hk-navbar .navbar-nav .nav-item .dropdown .apexcharts-menu {
   position: absolute;
+  right:10px;
 }
 .hk-wrapper .hk-navbar .navbar-nav .nav-item .dropdown.dropdown-notifications .dropdown-menu, .hk-wrapper .hk-navbar .navbar-nav .nav-item .dropdown.dropdown-notifications .apexcharts-toolbar .apexcharts-menu, .apexcharts-toolbar .hk-wrapper .hk-navbar .navbar-nav .nav-item .dropdown.dropdown-notifications .apexcharts-menu {
   width: 21.875rem;
@@ -81979,7 +81980,9 @@ Project:	Jampack
 .hk-wrapper .hk-navbar .navbar-brand .brand-img:last-child {
   margin-left: 0.5rem;
 }
-
+.login-brand-image{
+  width:200px;
+}
 
 .hk-wrapper[data-navbar-style="collapsed"] .hk-navbar {
   -webkit-transform: translateY(-100%);
@@ -83916,9 +83919,6 @@ Project:	Jampack
   margin-left: 0.5rem;
 }
 
-.brand-img{
-  width:200px;
-}
 
 .hk-wrapper[data-layout="navbar"][data-layout-style="default"] .hk-pg-wrapper {
   margin-left: 0;
@@ -91043,3 +91043,5 @@ Project:	Jampack
 }
 
 /*# sourceMappingURL=style.css.map */
+
+

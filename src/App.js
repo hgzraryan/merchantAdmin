@@ -1,5 +1,6 @@
 import Register from './components/Register';
 import Login from './components/Login';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import Home from './components/Home';
 import Layout from './components/Layout';
 import Editor from './components/Editor';
@@ -11,27 +12,25 @@ import LinkPage from './components/LinkPage';
 import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
 import { Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+
 
 const ROLES = {
   'User': 2001,
   'Editor': 1984,
+  'Approver': 6010,
   'Admin': 5150,
-
-
-  'Administrator':5151,
-  'Аssistant':1989,
-  'Approver':2021,
-  'Receptionist':7789
-
 }
 
 function App() {
+  
 
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* public routes */}
         <Route path="login" element={<Login />} />
+        <Route path="privcy-policy" element={<PrivacyPolicy />} />
         <Route path="register" element={<Register />} />
         <Route path="linkpage" element={<LinkPage />} />
         <Route path="unauthorized" element={<Unauthorized />} />

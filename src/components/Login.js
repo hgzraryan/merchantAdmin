@@ -5,6 +5,7 @@ import useInput from '../hooks/useInput';
 import useToggle from '../hooks/useToggle';
 import jwt from 'jwt-decode'
 import Swal from "sweetalert2";
+import {Helmet} from "react-helmet";
 
 
 import axios from '../api/axios';
@@ -129,7 +130,11 @@ const Login = () => {
 
 <div>
 
-	
+<Helmet>
+    <meta charSet="utf-8" />
+    <title>Vteam Laboratory information management system</title>
+    <link rel="icon" type="image/x-icon" href="dist/img/favicon.ico"></link>
+</Helmet>
               
 	 
 {/* Wrapper */}
@@ -145,7 +150,7 @@ const Login = () => {
                       <div className="auth-content flex-column pt-8 pb-md-8 pb-13">
                           <div className="text-center mb-7">
                               <a className="navbar-brand me-0" href="/login">
-                                  <img className="brand-img d-inline-block" src="dist/img/logo-dark-blue.svg" alt="brand"/>
+                                  <img className="brand-img d-inline-block login-brand-image" src="dist/img/logo-dark-blue.svg" alt="brand"/>
                               </a>
                           </div>
                           <form className="w-100" onSubmit={handleSubmit}>
@@ -246,7 +251,7 @@ const Login = () => {
                                   <div className="col-xl-8 text-center">
                                       <p className="footer-text pb-0"><span className="copy-text">Vteam LIMS © {new Date().getFullYear()}</span> 
                                       <span className="footer-link-sep">|</span>
-                                      <a href="/private-policy" className="" target="_blank">Գաղտնիության քաղաքականություն</a>
+                                      <a href="/privacy-policy" className="" target="_blank">Գաղտնիության քաղաքականություն</a>
                                       {/*
                                       <span className="footer-link-sep">|</span><a href="#" className="" target="_blank">T&C</a>
                                       <span className="footer-link-sep">|</span><a href="#" className="" target="_blank">System Status</a>
@@ -262,12 +267,12 @@ const Login = () => {
                       <div className="auth-content flex-column text-center py-8">
                           <div className="row">
                               <div className="col-xxl-7 col-xl-8 col-lg-11 mx-auto text-white-color">
-                                  <h2 className="mb-4">Կառավարման համակարգ 1.0</h2>
-                                  <p>Համակարգը նախատեսված է ուսանողների տվյալների կառավարման ամբողջական ցիկլը ապահովելու համար։</p>
+                                  <h2 className="mb-4">LIMS Կառավարման համակարգ</h2>
+                                  <p>Լաբորատոր հետազոտությունների տեղեկատվական կառավարման համակարգ</p>
                                   {/*<button className="btn  btn-flush-primary btn-uppercase mt-2">Take Tour</button>*/}
                               </div>
                           </div>
-                          <img src="dist/img/shema-homepage-2022-v3.webp"  className="img-fluid w-sm-50 mt-7" alt="login"/>
+                          <img src="dist/img/lab-login.png"  className="img-fluid w-sm-50 mt-7" alt="login"/>
                       </div>
                   </div>
               </div>

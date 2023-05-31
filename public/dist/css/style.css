@@ -81979,6 +81979,9 @@ Project:	Jampack
 .hk-wrapper .hk-navbar .navbar-brand .brand-img:last-child {
   margin-left: 0.5rem;
 }
+.hk-wrapper .hk-navbar .navbar-brand .brand-img {
+  width:none!important;
+}
 
 
 .hk-wrapper[data-navbar-style="collapsed"] .hk-navbar {

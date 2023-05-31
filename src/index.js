@@ -14,6 +14,8 @@ import './dist/css/style.css';
 
 
 ReactDOM.render(
+ 
+
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
