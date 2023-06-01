@@ -30,7 +30,7 @@ const Missing = () => {
                         <div className="auth-content py-md-0 py-8">
                             <div className="row">
                                 <div className="col-xl-12 text-center">
-                                    <img src="dist/img/macaroni-fatal-error.png"  className="img-fluid w-sm-80 w-50" alt="login"/>
+                                    <img src="/dist/img/macaroni-fatal-error.png"  className="img-fluid w-sm-80 w-50" alt="login"/>
                                     
                                 </div>
                             </div>
