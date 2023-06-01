@@ -5,8 +5,8 @@
 API URL
 http://161.35.193.18:6443/auth
 
-username: poghos
-password: 2221
+username: hgzraryan1
+password: hayrik
 
 
 ### VTEM LIMS
