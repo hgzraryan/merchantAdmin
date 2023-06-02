@@ -1,7 +1,6 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Outlet } from "react-router-dom";
 import useLogout from "../../hooks/useLogout";
-import React, { useState, useEffect, useRef } from "react";
-import Home from '../Home';
+import React, { useState } from "react";
 
 
 
@@ -10,13 +9,7 @@ const MainTemplate = () => {
     const navigate = useNavigate();
     const logout = useLogout();
 
-
-
-
-
-    
     //-------------------
-
     const [isActive, setIsActive] = useState(false);
 	const menuClick = event => {
 		setIsActive(current => !current);
@@ -27,7 +20,6 @@ const MainTemplate = () => {
 		msetIsActive(current => !current);
 	};
 	
-	
 	const [sisActive, ssetIsActive] = useState(false);
 	const smenuClick = event => {
 		ssetIsActive(current => !current);
@@ -37,13 +29,7 @@ const MainTemplate = () => {
 	const dropDownMenu1Click = event => {
 		dropDownMenu1IsActive(current => !current);
 	};
-
-
-
-
-    //--------------------------------------
-
-
+   //--------------------------------------
 
     const signOut = async () => {
         await logout();
@@ -51,77 +37,75 @@ const MainTemplate = () => {
     }
 
     return (
-
-        
-        <div>
-
-    
-           
-       
-
-        {/* Wrapper */}
-          <div className="hk-wrapper" data-layout="vertical" data-layout-style={misActive ? 'collapsed' : 'default'} data-hover={misActive ? 'active' : ''} data-menu="light" data-footer="simple">
-              {/* Top Navbar */}
-              <nav className="hk-navbar navbar navbar-expand-xl navbar-light fixed-top">
-                  <div className="container-fluid">
-                  {/* Start Nav */}
-                  <div className="nav-start-wrap">
-                      <button className="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover navbar-toggle d-xl-none" onClick={mmenuClick}><span className="icon"><span className="feather-icon">
-                      {/*<i data-feather="align-left"></i>*/}
-                      <i className="fas fa-align-left"></i>
-                          
-                      </span></span></button>
-                          
-                          {/* Search */}
-                      <form className="dropdown navbar-search">
-                          <div className={sisActive ? 'dropdown-toggle no-caret show' : 'dropdown-toggle no-caret'} data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="outside">
-                              <a  href="#" className="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover  d-xl-none" onClick={smenuClick}><span className="icon"><span className="feather-icon">
-                              {/*<i data-feather="search"></i>*/}
-                              <i className="fa fa-search" aria-hidden="true"></i>
-                              
-                              
-                              
-                              </span></span></a>
-                              <div className="input-group d-xl-flex d-none">
-                                  <span className="input-affix-wrapper input-search affix-border">
-                                      <input type="text" className="form-control  bg-transparent"  data-navbar-search-close="false" placeholder="Փնտրել..." aria-label="Փնտրել" />
-                                      <span className="input-suffix"><span>/</span>
-                                          <span className="btn-input-clear"><i className="bi bi-x-circle-fill"></i></span>
-                                          <span className="spinner-border spinner-border-sm input-loader text-primary" role="status">
-                                              <span className="sr-only">Բեռնում...</span>
-                                          </span>
-                                      </span>
-                                  </span>
-                              </div>
-                          </div>
-                          <div  className={sisActive ? 'dropdown-menu p-0 show' : 'dropdown-menu p-0'}>
-                          {/* Mobile Search */}
-                              <div className="dropdown-item d-xl-none bg-transparent" >
-                                  <div className="input-group mobile-search">
-                                      <span className="input-affix-wrapper input-search">
-                                          <input type="text" className="form-control" placeholder="Search..." aria-label="Search"/>
-                                          <span className="input-suffix" onClick={smenuClick}>
-                                              <span className="btn-input-clear"><i className="bi bi-x-circle-fill"></i></span>
-                                              <span className="spinner-border spinner-border-sm input-loader text-primary" role="status">
-                                                  <span className="sr-only">Բեռնում...</span>
-                                              </span>
-                                          </span>
-                                      </span>
-                                  </div>
-                              </div>
-                              {/* Mobile Search */}
-                              <div data-simplebar className="dropdown-body p-2">
-                                  <h6 className="dropdown-header">Recent Search
-                                  </h6>
-                                  <div className="dropdown-item bg-transparent">
-                                      <a href="#" className="badge badge-pill badge-soft-secondary">Grunt</a>
-                                      <a href="#" className="badge badge-pill badge-soft-secondary">Node JS</a>
-                                      <a href="#" className="badge badge-pill badge-soft-secondary">SCSS</a>
-                                  </div>
-                                  <div className="dropdown-divider"></div>
+        <section>
+            {/* Wrapper */}
+            <div className="hk-wrapper" data-layout="vertical" data-layout-style={misActive ? 'collapsed' : 'default'} data-hover={misActive ? 'active' : ''} data-menu="light" data-footer="simple">
+                {/* Top Navbar */}
+                <nav className="hk-navbar navbar navbar-expand-xl navbar-light fixed-top">
+                    <div className="container-fluid">
+                    {/* Start Nav */}
+                        <div className="nav-start-wrap">
+                            <button className="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover navbar-toggle d-xl-none" onClick={mmenuClick}>
+                                <span className="icon">
+                                    <span className="feather-icon">
+                                        {/*<i data-feather="align-left"></i>*/}
+                                        <i className="fas fa-align-left"></i>
+                                    </span>
+                                </span>
+                            </button>
+                            {/* Search */}
+                            <form className="dropdown navbar-search">
+                                <div className={sisActive ? 'dropdown-toggle no-caret show' : 'dropdown-toggle no-caret'} data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="outside">
+                                    <a  href="/privacy-policy" className="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover  d-xl-none" onClick={smenuClick}>
+                                        <span className="icon">
+                                            <span className="feather-icon">
+                                                {/*<i data-feather="search"></i>*/}
+                                                <i className="fa fa-search" aria-hidden="true"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <div className="input-group d-xl-flex d-none">
+                                        <span className="input-affix-wrapper input-search affix-border">
+                                            <input type="text" className="form-control  bg-transparent"  data-navbar-search-close="false" placeholder="Փնտրել..." aria-label="Փնտրել" />
+                                            <span className="input-suffix">
+                                                <span>/</span>
+                                                <span className="btn-input-clear">
+                                                    <i className="bi bi-x-circle-fill"></i>
+                                                </span>
+                                                <span className="spinner-border spinner-border-sm input-loader text-primary" role="status">
+                                                    <span className="sr-only">Բեռնում...</span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div  className={sisActive ? 'dropdown-menu p-0 show' : 'dropdown-menu p-0'}>
+                                    {/* Mobile Search */}
+                                    <div className="dropdown-item d-xl-none bg-transparent" >
+                                        <div className="input-group mobile-search">
+                                            <span className="input-affix-wrapper input-search">
+                                                <input type="text" className="form-control" placeholder="Search..." aria-label="Search"/>
+                                                <span className="input-suffix" onClick={smenuClick}>
+                                                    <span className="btn-input-clear"><i className="bi bi-x-circle-fill"></i></span>
+                                                    <span className="spinner-border spinner-border-sm input-loader text-primary" role="status">
+                                                        <span className="sr-only">Բեռնում...</span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {/* Mobile Search */}
+                                    <div data-simplebar className="dropdown-body p-2">
+                                        <h6 className="dropdown-header">Recent Search</h6>
+                                        <div className="dropdown-item bg-transparent">
+                                            <a href="/privacy-policy" className="badge badge-pill badge-soft-secondary">Grunt</a>
+                                            <a href="/privacy-policy" className="badge badge-pill badge-soft-secondary">Node JS</a>
+                                            <a href="/privacy-policy" className="badge badge-pill badge-soft-secondary">SCSS</a>
+                                        </div>
+                                        <div className="dropdown-divider"></div>
                                   <h6 className="dropdown-header">Help
                                   </h6>
-                                  <a href="#" className="dropdown-item">
+                                  <a href="/privacy-policy" className="dropdown-item">
                                       <div className="media align-items-center">
                                           <div className="media-head me-2">
                                               <div className="avatar avatar-icon avatar-xs avatar-soft-light avatar-rounded">
@@ -140,7 +124,7 @@ const MainTemplate = () => {
                                           </div>
                                       </div>
                                   </a>
-                                  <a href="#" className="dropdown-item">
+                                  <a href="/privacy-policy" className="dropdown-item">
                                       <div className="media align-items-center">
                                           <div className="media-head me-2">
                                               <div className="avatar avatar-icon avatar-xs avatar-soft-light avatar-rounded">
@@ -162,7 +146,7 @@ const MainTemplate = () => {
                                   <div className="dropdown-divider"></div>
                                   <h6 className="dropdown-header">Users
                                   </h6>
-                                  <a href="#" className="dropdown-item">
+                                  <a href="/privacy-policy" className="dropdown-item">
                                       <div className="media align-items-center">
                                           <div className="media-head me-2">
                                               <div className="avatar avatar-xs avatar-rounded">
@@ -174,7 +158,7 @@ const MainTemplate = () => {
                                           </div>
                                       </div>
                                   </a>
-                                  <a href="#" className="dropdown-item">
+                                  <a href="/privacy-policy" className="dropdown-item">
                                       <div className="media align-items-center">
                                           <div className="media-head me-2">
                                               <div className="avatar avatar-xs avatar-soft-primary avatar-rounded">
@@ -186,7 +170,7 @@ const MainTemplate = () => {
                                           </div>
                                       </div>
                                   </a>
-                                  <a href="#" className="dropdown-item">
+                                  <a href="/privacy-policy" className="dropdown-item">
                                       <div className="media align-items-center">
                                           <div className="media-head me-2">
                                               <div className="avatar avatar-xs avatar-rounded">
@@ -199,7 +183,7 @@ const MainTemplate = () => {
                                       </div>
                                   </a>
                               </div>
-                              <div className="dropdown-footer d-xl-flex d-none"><a href="#"><u>Search all</u></a></div>
+                              <div className="dropdown-footer d-xl-flex d-none"><a href="/privacy-policy"><u>Search all</u></a></div>
                           </div>
                       </form>
                       {/* /Search */}
@@ -363,16 +347,16 @@ const MainTemplate = () => {
                                       </div>
                                       <div className="dropdown-divider"></div>
                                       <a className="dropdown-item" href="profile.html">Profile</a>
-                                      <a className="dropdown-item" href="#"><span className="me-2">Offers</span><span className="badge badge-sm badge-soft-pink">2</span></a><div className="dropdown-divider"></div>
+                                      <a className="dropdown-item" href="/privacy-policy"><span className="me-2">Offers</span><span className="badge badge-sm badge-soft-pink">2</span></a><div className="dropdown-divider"></div>
                                       <h6 className="dropdown-header">Manage Account</h6>
-                                      <a className="dropdown-item" href="#"><span className="dropdown-icon feather-icon"><i data-feather="credit-card"></i></span><span>Payment methods</span></a>
-                                      <a className="dropdown-item" href="#"><span className="dropdown-icon feather-icon"><i data-feather="check-square"></i></span><span>Subscriptions</span></a>
-                                      <a className="dropdown-item" href="#"><span className="dropdown-icon feather-icon"><i data-feather="settings"></i></span><span>Settings</span></a>
+                                      <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="credit-card"></i></span><span>Payment methods</span></a>
+                                      <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="check-square"></i></span><span>Subscriptions</span></a>
+                                      <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="settings"></i></span><span>Settings</span></a>
                                       <div className="dropdown-divider"></div>
-                                      <a className="dropdown-item" href="#"><span className="dropdown-icon feather-icon"><i data-feather="tag"></i></span><span>Raise a ticket</span></a>
+                                      <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="tag"></i></span><span>Raise a ticket</span></a>
                                       <div className="dropdown-divider"></div>
-                                      <a className="dropdown-item" href="#">Terms & Conditions</a>
-                                      <a className="dropdown-item" href="#">Help & Support</a>
+                                      <a className="dropdown-item" href="/privacy-policy">Terms & Conditions</a>
+                                      <a className="dropdown-item" href="/privacy-policy">Help & Support</a>
                                   </div>
                               </div>
                           </li>
@@ -440,23 +424,24 @@ const MainTemplate = () => {
                               <div className="nav-header">
                                   <span>Գործիքակազմ</span>
                               </div>
+                              
                               <ul className="navbar-nav flex-column">
                                   <li className="nav-item">
-                                      <a className="nav-link" href="#">
+                                      <Link className="nav-link" to="./clients">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
                                                 <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="User / Users_Group">
-                                                        <path id="Vector" d="M17 20C17 18.3431 14.7614 17 12 17C9.23858 17 7 18.3431 7 20M21 17.0004C21 15.7702 19.7659 14.7129 18 14.25M3 17.0004C3 15.7702 4.2341 14.7129 6 14.25M18 10.2361C18.6137 9.68679 19 8.8885 19 8C19 6.34315 17.6569 5 16 5C15.2316 5 14.5308 5.28885 14 5.76389M6 10.2361C5.38625 9.68679 5 8.8885 5 8C5 6.34315 6.34315 5 8 5C8.76835 5 9.46924 5.28885 10 5.76389M12 14C10.3431 14 9 12.6569 9 11C9 9.34315 10.3431 8 12 8C13.6569 8 15 9.34315 15 11C15 12.6569 13.6569 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path id="Vector" d="M17 20C17 18.3431 14.7614 17 12 17C9.23858 17 7 18.3431 7 20M21 17.0004C21 15.7702 19.7659 14.7129 18 14.25M3 17.0004C3 15.7702 4.2341 14.7129 6 14.25M18 10.2361C18.6137 9.68679 19 8.8885 19 8C19 6.34315 17.6569 5 16 5C15.2316 5 14.5308 5.28885 14 5.76389M6 10.2361C5.38625 9.68679 5 8.8885 5 8C5 6.34315 6.34315 5 8 5C8.76835 5 9.46924 5.28885 10 5.76389M12 14C10.3431 14 9 12.6569 9 11C9 9.34315 10.3431 8 12 8C13.6569 8 15 9.34315 15 11C15 12.6569 13.6569 14 12 14Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                                     </g>
                                                 </svg>
                                               </span>
                                           </span>
                                           <span className="nav-link-text">Հաճախորդներ</span>
-                                      </a>
+                                      </Link>
                                   </li>	
                                   <li className="nav-item">
-                                      <a className="nav-link" href="#">
+                                  <Link className="nav-link" to="./agents">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
                                               <svg width="800px" height="800px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
@@ -465,10 +450,10 @@ const MainTemplate = () => {
                                               </span>
                                           </span>
                                           <span className="nav-link-text">Գործակալներ</span>
-                                      </a>
+                                      </Link>
                                   </li>	
                                   <li className="nav-item">
-                                      <a className="nav-link" href="#">
+                                  <Link className="nav-link" to="./Organizations">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
                                               <svg fill="#000000" width="800px" height="800px" viewBox="0 0 15 15" id="town" xmlns="http://www.w3.org/2000/svg">
@@ -477,19 +462,19 @@ const MainTemplate = () => {
                                               </span>
                                           </span>
                                           <span className="nav-link-text">Կազմակերպություններ</span>
-                                      </a>
+                                      </Link>
                                   </li>	
                                   <li className="nav-item">
-                                      <a className="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#dash_chatpop">
+                                      <Link className="nav-link" to="#" data-bs-toggle="collapse" data-bs-target="#dash_chatpop">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
-                                               <svg fill="#000000" width="800px" height="800px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M491.52 618.879v190.075c0 16.968-13.754 30.72-30.72 30.72H71.68c-16.966 0-30.72-13.752-30.72-30.72v-593.91c0-16.968 13.754-30.72 30.72-30.72H460.8c16.966 0 30.72 13.752 30.72 30.72v241.664c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48V215.044c0-39.591-32.094-71.68-71.68-71.68H71.68c-39.586 0-71.68 32.089-71.68 71.68v593.91c0 39.591 32.094 71.68 71.68 71.68H460.8c39.586 0 71.68-32.089 71.68-71.68V618.879c0-11.311-9.169-20.48-20.48-20.48s-20.48 9.169-20.48 20.48z"/><path d="M399.36 327.678c5.657 0 10.24-4.583 10.24-10.24v-40.96c0-5.657-4.583-10.24-10.24-10.24H133.12a10.238 10.238 0 00-10.24 10.24v40.96c0 5.657 4.583 10.24 10.24 10.24h266.24zm0 40.96H133.12c-28.278 0-51.2-22.922-51.2-51.2v-40.96c0-28.278 22.922-51.2 51.2-51.2h266.24c28.278 0 51.2 22.922 51.2 51.2v40.96c0 28.278-22.922 51.2-51.2 51.2zm-216.711 98.593c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm122.88 0c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm-122.88 123.904c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm122.88 0c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm122.88 0c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm-245.76 122.88c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm122.88 0c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm122.88 0c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm179.469-37.034l-199.67-199.67c-9.738-9.738-9.738-25.535 0-35.272l4.808-4.797c9.756-9.762 25.547-9.762 35.284-.02l199.674 199.664c7.998 7.998 20.965 7.997 28.963-.001s7.997-20.965-.001-28.963l-199.67-199.66c-25.73-25.745-67.468-25.745-93.202.005l-4.803 4.793c-25.749 25.749-25.749 67.48-.015 93.214l199.67 199.67c7.998 7.998 20.965 7.998 28.963 0s7.998-20.965 0-28.963z"/><path d="M678.341 609.334l-104.54-104.54c-9.747-9.747-9.747-25.531-.004-35.268l4.832-4.843c9.722-9.722 25.519-9.722 35.257.015l104.551 104.541c7.998 7.998 20.966 7.997 28.963-.001s7.997-20.966-.001-28.963l-104.55-104.54c-25.733-25.733-67.464-25.733-93.198.001l-4.828 4.838c-25.729 25.714-25.729 67.439.015 93.183l104.54 104.54c7.998 7.998 20.965 7.998 28.963 0s7.998-20.965 0-28.963z"/><path d="M766.665 559.551l-104.54-104.54c-9.747-9.747-9.747-25.531-.004-35.268l4.832-4.843c9.722-9.722 25.519-9.722 35.257.015l104.551 104.541c7.998 7.998 20.966 7.997 28.963-.001s7.997-20.966-.001-28.963l-104.55-104.54c-25.733-25.733-67.464-25.733-93.198.001l-4.828 4.838c-25.729 25.714-25.729 67.439.015 93.183l104.54 104.54c7.998 7.998 20.965 7.998 28.963 0s7.998-20.965 0-28.963z"/><path d="M854.775 510.196l-104.54-104.54c-9.747-9.747-9.747-25.531-.004-35.268l4.832-4.843c9.722-9.722 25.519-9.722 35.257.015l104.551 104.541c7.998 7.998 20.966 7.997 28.963-.001s7.997-20.966-.001-28.963l-104.55-104.54c-25.733-25.733-67.464-25.733-93.198.001l-4.828 4.838c-25.729 25.714-25.729 67.439.015 93.183l104.54 104.54c7.998 7.998 20.965 7.998 28.963 0s7.998-20.965 0-28.963zM685.653 754.755l-93-93-28.963 28.963 93 93z"/><path d="M818.516 393.754l119.562 119.562 28.963-28.963-119.562-119.562z"/><path d="M931.165 506.23c32.758 32.579 51.49 76.693 51.49 123.821 0 96.445-78.178 174.623-174.623 174.623-46.962 0-90.924-18.593-123.472-51.141l-28.963 28.963c40.154 40.154 94.499 63.138 152.435 63.138 119.066 0 215.583-96.516 215.583-215.583 0-58.143-23.155-112.673-63.567-152.864l-28.883 29.042z"/>
+                                               <svg fill="#000000" width="800px" height="800px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                                               <path d="M491.52 618.879v190.075c0 16.968-13.754 30.72-30.72 30.72H71.68c-16.966 0-30.72-13.752-30.72-30.72v-593.91c0-16.968 13.754-30.72 30.72-30.72H460.8c16.966 0 30.72 13.752 30.72 30.72v241.664c0 11.311 9.169 20.48 20.48 20.48s20.48-9.169 20.48-20.48V215.044c0-39.591-32.094-71.68-71.68-71.68H71.68c-39.586 0-71.68 32.089-71.68 71.68v593.91c0 39.591 32.094 71.68 71.68 71.68H460.8c39.586 0 71.68-32.089 71.68-71.68V618.879c0-11.311-9.169-20.48-20.48-20.48s-20.48 9.169-20.48 20.48z"/><path d="M399.36 327.678c5.657 0 10.24-4.583 10.24-10.24v-40.96c0-5.657-4.583-10.24-10.24-10.24H133.12a10.238 10.238 0 00-10.24 10.24v40.96c0 5.657 4.583 10.24 10.24 10.24h266.24zm0 40.96H133.12c-28.278 0-51.2-22.922-51.2-51.2v-40.96c0-28.278 22.922-51.2 51.2-51.2h266.24c28.278 0 51.2 22.922 51.2 51.2v40.96c0 28.278-22.922 51.2-51.2 51.2zm-216.711 98.593c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm122.88 0c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm-122.88 123.904c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm122.88 0c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm122.88 0c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm-245.76 122.88c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm122.88 0c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm122.88 0c5.468 28.856-19.364 53.688-48.22 48.22-16.026-3.041-29.143-16.159-32.174-32.184-5.478-28.856 19.354-53.688 48.21-48.22 16.036 3.041 29.143 16.159 32.184 32.184zm179.469-37.034l-199.67-199.67c-9.738-9.738-9.738-25.535 0-35.272l4.808-4.797c9.756-9.762 25.547-9.762 35.284-.02l199.674 199.664c7.998 7.998 20.965 7.997 28.963-.001s7.997-20.965-.001-28.963l-199.67-199.66c-25.73-25.745-67.468-25.745-93.202.005l-4.803 4.793c-25.749 25.749-25.749 67.48-.015 93.214l199.67 199.67c7.998 7.998 20.965 7.998 28.963 0s7.998-20.965 0-28.963z"/><path d="M678.341 609.334l-104.54-104.54c-9.747-9.747-9.747-25.531-.004-35.268l4.832-4.843c9.722-9.722 25.519-9.722 35.257.015l104.551 104.541c7.998 7.998 20.966 7.997 28.963-.001s7.997-20.966-.001-28.963l-104.55-104.54c-25.733-25.733-67.464-25.733-93.198.001l-4.828 4.838c-25.729 25.714-25.729 67.439.015 93.183l104.54 104.54c7.998 7.998 20.965 7.998 28.963 0s7.998-20.965 0-28.963z"/><path d="M766.665 559.551l-104.54-104.54c-9.747-9.747-9.747-25.531-.004-35.268l4.832-4.843c9.722-9.722 25.519-9.722 35.257.015l104.551 104.541c7.998 7.998 20.966 7.997 28.963-.001s7.997-20.966-.001-28.963l-104.55-104.54c-25.733-25.733-67.464-25.733-93.198.001l-4.828 4.838c-25.729 25.714-25.729 67.439.015 93.183l104.54 104.54c7.998 7.998 20.965 7.998 28.963 0s7.998-20.965 0-28.963z"/><path d="M854.775 510.196l-104.54-104.54c-9.747-9.747-9.747-25.531-.004-35.268l4.832-4.843c9.722-9.722 25.519-9.722 35.257.015l104.551 104.541c7.998 7.998 20.966 7.997 28.963-.001s7.997-20.966-.001-28.963l-104.55-104.54c-25.733-25.733-67.464-25.733-93.198.001l-4.828 4.838c-25.729 25.714-25.729 67.439.015 93.183l104.54 104.54c7.998 7.998 20.965 7.998 28.963 0s7.998-20.965 0-28.963zM685.653 754.755l-93-93-28.963 28.963 93 93z"/><path d="M818.516 393.754l119.562 119.562 28.963-28.963-119.562-119.562z"/><path d="M931.165 506.23c32.758 32.579 51.49 76.693 51.49 123.821 0 96.445-78.178 174.623-174.623 174.623-46.962 0-90.924-18.593-123.472-51.141l-28.963 28.963c40.154 40.154 94.499 63.138 152.435 63.138 119.066 0 215.583-96.516 215.583-215.583 0-58.143-23.155-112.673-63.567-152.864l-28.883 29.042z"/>
                                                </svg>
                                               </span>
                                           </span>
-                                          <span className="nav-link-text">Հաշվարկներ</span>
-                                          
-                                      </a>
+                                          <span className="nav-link-text">Հաշվարկներ</span>                                          
+                                      </Link>
                                       <ul id="dash_chatpop" className="nav flex-column collapse  nav-children">
                                           <li className="nav-item">
                                               <ul className="nav flex-column">
@@ -504,18 +489,18 @@ const MainTemplate = () => {
                                       </ul>	
                                   </li>	
                                   <li className="nav-item">
-                                      <a className="nav-link" href="#" onClick={dropDownMenu1Click} data-bs-toggle="collapse" data-bs-target="#dash_chat">
+                                      <Link className="nav-link" to="#" onClick={dropDownMenu1Click} data-bs-toggle="collapse" data-bs-target="#dash_chat">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
                                               <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <rect x="3" y="6" width="18" height="13" rx="2" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                <path d="M3 10H20.5" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                                <path d="M7 15H9" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <rect x="3" y="6" width="18" height="13" rx="2" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                <path d="M3 10H20.5" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                                <path d="M7 15H9" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                                 </svg>
                                               </span>
                                           </span>
                                           <span className="nav-link-text">Վճարման մեթոդները</span>
-                                      </a>
+                                      </Link>
                                       <ul id="dash_chat" className={dropDownMenu1 ? 'nav flex-column collapse  nav-children' : 'nav flex-column collapse  nav-children show'}>
                                           <li className="nav-item">
                                               <ul className="nav flex-column">
@@ -533,7 +518,7 @@ const MainTemplate = () => {
                                       </ul>	
                                   </li>	
                                   <li className="nav-item">
-                                      <a className="nav-link" href="email.html">
+                                      <Link className="nav-link" to="email.html">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
                                               <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 64 64">
@@ -571,10 +556,10 @@ const MainTemplate = () => {
                                               </span>
                                           </span>
                                           <span className="nav-link-text">Գնացուցակ</span>
-                                      </a>
+                                      </Link>
                                   </li>
                                   <li className="nav-item">
-                                      <a className="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#dash_scrumboard">
+                                      <Link className="nav-link" to="#" data-bs-toggle="collapse" data-bs-target="#dash_scrumboard">
                                           <span className="nav-icon-wrap position-relative">
                                               <span className="badge badge-sm badge-primary badge-sm badge-pill position-top-end-overflow">3</span>
                                               <span className="svg-icon">
@@ -583,8 +568,8 @@ const MainTemplate = () => {
                                                     <g id="Complete">
                                                     <g id="user">
                                                     <g>
-                                                    <path d="M20,21V19a4,4,0,0,0-4-4H8a4,4,0,0,0-4,4v2" fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
-                                                    <circle cx="12" cy="7" fill="none" r="4" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+                                                    <path d="M20,21V19a4,4,0,0,0-4-4H8a4,4,0,0,0-4,4v2" fill="none" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
+                                                    <circle cx="12" cy="7" fill="none" r="4" stroke="#000000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
                                                     </g>
                                                     </g>
                                                     </g>
@@ -592,7 +577,7 @@ const MainTemplate = () => {
                                               </span>
                                           </span>
                                           <span className="nav-link-text">Աշխատակիցներ</span>
-                                      </a>
+                                      </Link>
                                       <ul id="dash_scrumboard" className="nav flex-column collapse  nav-children">
                                           <li className="nav-item">
                                               <ul className="nav flex-column">
@@ -611,7 +596,7 @@ const MainTemplate = () => {
                                       </ul>	
                                   </li>
                                   <li className="nav-item">
-                                      <a className="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#dash_contact">
+                                      <Link className="nav-link" to="#" data-bs-toggle="collapse" data-bs-target="#dash_contact">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
                                               <svg fill="#000000" height="800px" width="800px" version="1.1" id="Layer_1"  viewBox="0 0 480 480" >
@@ -651,7 +636,7 @@ const MainTemplate = () => {
                                               </span>
                                           </span>
                                           <span className="nav-link-text">Ստորաբաժանումներ</span>
-                                      </a>
+                                      </Link>
                                       <ul id="dash_contact" className="nav flex-column collapse  nav-children">
                                           <li className="nav-item">
                                               <ul className="nav flex-column">
@@ -669,7 +654,7 @@ const MainTemplate = () => {
                                       </ul>	
                                   </li>
                                   <li className="nav-item">
-                                      <a className="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#dash_file">
+                                      <Link className="nav-link" to="#" data-bs-toggle="collapse" data-bs-target="#dash_file">
                                           <span className="nav-icon-wrap">
                                           <svg fill="#000000" width="23" height="23" viewBox="0 0 512 512" id="Layer_1" version="1.1">
                                                 <g>
@@ -686,7 +671,7 @@ const MainTemplate = () => {
                                                 </svg>
                                           </span>
                                           <span className="nav-link-text">Ախտորոշումներ</span>
-                                      </a>
+                                      </Link>
                                       <ul id="dash_file" className="nav flex-column collapse  nav-children">
                                           <li className="nav-item">
                                               <ul className="nav flex-column">
@@ -701,32 +686,32 @@ const MainTemplate = () => {
                                       </ul>	
                                   </li>
                                   <li className="nav-item">
-                                      <a className="nav-link" href="gallery.html">
+                                      <Link className="nav-link" to="gallery.html">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
                                               <svg version="1.1" id="Uploaded to svgrepo.com" 
                                                     width="800px" height="800px" viewBox="0 0 32 32">
                                                 
-                                                <path class="linesandangles_een" d="M30,13V7H2v6c1.657,0,3,1.343,3,3s-1.343,3-3,3v6h28v-6c-1.657,0-3-1.343-3-3S28.343,13,30,13z
+                                                <path className="linesandangles_een" d="M30,13V7H2v6c1.657,0,3,1.343,3,3s-1.343,3-3,3v6h28v-6c-1.657,0-3-1.343-3-3S28.343,13,30,13z
                                                     M28,20.582V23h-7v-2h-2v2H4v-2.418C5.764,19.81,7,18.046,7,16s-1.236-3.81-3-4.583V9h15v2h2V9h7v2.417
                                                     c-1.764,0.773-3,2.536-3,4.583S26.236,19.81,28,20.582z M19,12h2v2h-2V12z M19,15h2v2h-2V15z M19,18h2v2h-2V18z"/>
                                                 </svg>
                                               </span>
                                           </span>
                                           <span className="nav-link-text">Զեղչի քարտեր</span>
-                                      </a>
+                                      </Link>
                                   </li>
                                   <li className="nav-item">
-                                      <a className="nav-link" href="#" data-bs-toggle="collapse" data-bs-target="#dash_integ">
+                                      <Link className="nav-link" to="#" data-bs-toggle="collapse" data-bs-target="#dash_integ">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
                                                 <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                    <path class="a" d="M12,2A10,10,0,1,0,22,12H12Z"/><path class="a" d="M15,9h6.54077A10.02174,10.02174,0,0,0,15,2.45923Z"/>
+                                                    <path className="a" d="M12,2A10,10,0,1,0,22,12H12Z"/><path className="a" d="M15,9h6.54077A10.02174,10.02174,0,0,0,15,2.45923Z"/>
                                                 </svg>
                                               </span>
                                           </span>
                                           <span className="nav-link-text">Հաշվետվություններ</span>
-                                      </a>
+                                      </Link>
                                       <ul id="dash_integ" className="nav flex-column collapse  nav-children">
                                           <li className="nav-item">
                                               <ul className="nav flex-column">
@@ -1086,17 +1071,14 @@ const MainTemplate = () => {
               {/* /Chat Popup */}
   
               {/* Main Content */}
-              <div className="hk-pg-wrapper">
-                  <div className="container-xxl">
+                <div className="hk-pg-wrapper">
+                    <div className="container-xxl">
 
-
-                    <Home />
-        
-
+                        <Outlet/>  
                        
-                  </div>
-                  {/* Page Footer */}
-                  <div className="hk-footer">
+                    </div>
+                    {/* Page Footer */}
+                    <div className="hk-footer">
                       <footer className="container-xxl footer">
                       <div className="row">
                             <div className="col-xl-8 text-center">
@@ -1111,17 +1093,13 @@ const MainTemplate = () => {
                             </div>
                         </div>
                       </footer>
-                  </div>
-                  {/* Page Footer */}
-  
-              </div>
-              {/* /Main Content */}
-          </div>
-          {/* /Wrapper */}
-  
-          
-        
-        </div>
+                    </div>
+                    {/* Page Footer */}  
+                </div>
+            {/* /Main Content */}
+            </div>
+            {/* /Wrapper */}  
+        </section>
 
     )
 }

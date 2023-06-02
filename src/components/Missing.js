@@ -54,18 +54,7 @@ const Missing = () => {
             {/*<!-- /Page Body -->*/}		
         </div>
         
-        {/*<!-- Page Footer -->*/}
-        <div className="hk-footer">
-            <footer className="container-xxl footer">
-                <div className="row">
-                    <div className="col-xl-5">
-                        <p className="footer-text"><span className="copy-text">Vteam LIMS © {new Date().getFullYear()}</span> <a href="#" className="" target="_blank">Գաղտնիության քաղաքականություն</a></p>
-                    </div>
-                    
-                </div>
-            </footer>
-        </div>
-        {/*<!-- / Page Footer -->*/}
+       
 
     </div>
     {/*<!-- /Main Content -->*/}
