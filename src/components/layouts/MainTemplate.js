@@ -103,257 +103,260 @@ const MainTemplate = () => {
                                             <a href="/privacy-policy" className="badge badge-pill badge-soft-secondary">SCSS</a>
                                         </div>
                                         <div className="dropdown-divider"></div>
-                                  <h6 className="dropdown-header">Help
-                                  </h6>
-                                  <a href="/privacy-policy" className="dropdown-item">
-                                      <div className="media align-items-center">
-                                          <div className="media-head me-2">
-                                              <div className="avatar avatar-icon avatar-xs avatar-soft-light avatar-rounded">
-                                                  <span className="initial-wrap">
-                                                      <span className="svg-icon">
-                                                          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-corner-down-right" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                                              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                              <path d="M6 6v6a3 3 0 0 0 3 3h10l-4 -4m0 8l4 -4"></path>
-                                                           </svg>
-                                                      </span>
-                                                  </span>
-                                              </div>
-                                          </div>
-                                          <div className="media-body">
-                                              How to setup theme?
-                                          </div>
-                                      </div>
-                                  </a>
-                                  <a href="/privacy-policy" className="dropdown-item">
-                                      <div className="media align-items-center">
-                                          <div className="media-head me-2">
-                                              <div className="avatar avatar-icon avatar-xs avatar-soft-light avatar-rounded">
-                                                  <span className="initial-wrap">
-                                                      <span className="svg-icon">
-                                                          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-corner-down-right" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                                              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                              <path d="M6 6v6a3 3 0 0 0 3 3h10l-4 -4m0 8l4 -4"></path>
-                                                           </svg>
-                                                      </span>
-                                                  </span>
-                                              </div>
-                                          </div>
-                                          <div className="media-body">
-                                              View detail documentation
-                                          </div>
-                                      </div>
-                                  </a>
-                                  <div className="dropdown-divider"></div>
-                                  <h6 className="dropdown-header">Users
-                                  </h6>
-                                  <a href="/privacy-policy" className="dropdown-item">
-                                      <div className="media align-items-center">
-                                          <div className="media-head me-2">
-                                              <div className="avatar avatar-xs avatar-rounded">
-                                                  <img src="/dist/img/avatar3.jpg" alt="user" className="avatar-img"/>
-                                              </div>
-                                          </div>
-                                          <div className="media-body">
-                                              Sarah Jone
-                                          </div>
-                                      </div>
-                                  </a>
-                                  <a href="/privacy-policy" className="dropdown-item">
-                                      <div className="media align-items-center">
-                                          <div className="media-head me-2">
-                                              <div className="avatar avatar-xs avatar-soft-primary avatar-rounded">
-                                                  <span className="initial-wrap"></span>
-                                              </div>
-                                          </div>
-                                          <div className="media-body">
-                                              Joe Jackson
-                                          </div>
-                                      </div>
-                                  </a>
-                                  <a href="/privacy-policy" className="dropdown-item">
-                                      <div className="media align-items-center">
-                                          <div className="media-head me-2">
-                                              <div className="avatar avatar-xs avatar-rounded">
-                                                  <img src="/dist/img/avatar4.jpg" alt="user" className="avatar-img"/>
-                                              </div>
-                                          </div>
-                                          <div className="media-body">
-                                              Maria Richard
-                                          </div>
-                                      </div>
-                                  </a>
-                              </div>
-                              <div className="dropdown-footer d-xl-flex d-none"><a href="/privacy-policy"><u>Search all</u></a></div>
-                          </div>
-                      </form>
-                      {/* /Search */}
-                  </div>
-                  {/* /Start Nav */}
-                  
-                  {/* End Nav */}
-                  <div className="nav-end-wrap" onClick={menuClick}>
-                      <ul className="navbar-nav flex-row">
-                      {/*
-                          <li className="nav-item">
-                              <a href="email.html" className="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover"><span className="icon"><span className=" position-relative"><span className="feather-icon"><i data-feather="inbox"></i></span><span className="badge badge-sm badge-soft-primary badge-sm badge-pill position-top-end-overflow-1">4</span></span></span></a>
-                          </li>
-                      
-                          <li className="nav-item">
-                              <div className="dropdown dropdown-notifications">
-                                  <a href="#" className="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover dropdown-toggle no-caret" data-bs-toggle="dropdown" data-dropdown-animation role="button" aria-haspopup="true" aria-expanded="false"><span className="icon"><span className="position-relative"><span className="feather-icon"><i data-feather="bell"></i></span><span className="badge badge-success badge-indicator position-top-end-overflow-1"></span></span></span></a>
-                                  <div className="dropdown-menu dropdown-menu-end p-0">
-                                      <h6 className="dropdown-header px-4 fs-6">Notifications<a href="#" className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover"><span className="icon"><span className="feather-icon"><i data-feather="settings"></i></span></span></a>
-                                      </h6>
-                                      <div data-simplebar className="dropdown-body  p-2">
-                                          <a href="#" className="dropdown-item">
-                                              <div className="media">
-                                                  <div className="media-head">
-                                                      <div className="avatar avatar-rounded avatar-sm">
-                                                          <img src="dist/img/avatar2.jpg" alt="user" className="avatar-img"/>
-                                                      </div>
-                                                  </div>
-                                                  <div className="media-body">
-                                                      <div>
-                                                          <div className="notifications-text">Morgan Freeman accepted your invitation to join the team</div>
-                                                          <div className="notifications-info">
-                                                              <span className="badge badge-soft-success">Collaboration</span>
-                                                              <div className="notifications-time">Today, 10:14 PM</div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </a>
-                                          <a href="#" className="dropdown-item">
-                                              <div className="media">
-                                                  <div className="media-head">
-                                                      <div className="avatar  avatar-icon avatar-sm avatar-success avatar-rounded">
-                                                          <span className="initial-wrap">
-                                                              <span className="feather-icon"><i data-feather="inbox"></i></span>
-                                                          </span>
-                                                      </div>
-                                                  </div>
-                                                  <div className="media-body">
-                                                      <div>
-                                                          <div className="notifications-text">New message received from Alan Rickman</div>
-                                                          <div className="notifications-info">
-                                                              <div className="notifications-time">Today, 7:51 AM</div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </a>
-                                          <a href="#" className="dropdown-item">
-                                              <div className="media">
-                                                  <div className="media-head">
-                                                      <div className="avatar  avatar-icon avatar-sm avatar-pink avatar-rounded">
-                                                          <span className="initial-wrap">
-                                                              <span className="feather-icon"><i data-feather="clock"></i></span>
-                                                          </span>
-                                                      </div>
-                                                  </div>
-                                                  <div className="media-body">
-                                                      <div>
-                                                          <div className="notifications-text">You have a follow up with Jampack Head on Friday, Dec 19 at 9:30 am</div>
-                                                          <div className="notifications-info">
-                                                              <div className="notifications-time">Yesterday, 9:25 PM</div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </a>
-                                          <a href="#" className="dropdown-item">
-                                              <div className="media">
-                                                  <div className="media-head">
-                                                      <div className="avatar avatar-sm avatar-rounded">
-                                                          <img src="dist/img/avatar3.jpg" alt="user" className="avatar-img"/>
-                                                      </div>
-                                                  </div>
-                                                  <div className="media-body">
-                                                      <div>
-                                                          <div className="notifications-text">Application of Sarah Williams is waiting for your approval</div>
-                                                          <div className="notifications-info">
-                                                              <div className="notifications-time">Today 10:14 PM</div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </a>
-                                          <a href="#" className="dropdown-item">
-                                              <div className="media">
-                                                  <div className="media-head">
-                                                      <div className="avatar avatar-sm avatar-rounded">
-                                                          <img src="dist/img/avatar10.jpg" alt="user" className="avatar-img"/>
-                                                      </div>
-                                                  </div>
-                                                  <div className="media-body">
-                                                      <div>	
-                                                          <div className="notifications-text">Winston Churchil shared a document with you</div>
-                                                          <div className="notifications-info">
-                                                              <span className="badge badge-soft-violet">File Manager</span>
-                                                              <div className="notifications-time">2 Oct, 2021</div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </a>
-                                          <a href="#" className="dropdown-item">
-                                              <div className="media">
-                                                  <div className="media-head">
-                                                      <div className="avatar  avatar-icon avatar-sm avatar-danger avatar-rounded">
-                                                          <span className="initial-wrap">
-                                                              <span className="feather-icon"><i data-feather="calendar"></i></span>
-                                                          </span>
-                                                      </div>
-                                                  </div>
-                                                  <div className="media-body">
-                                                      <div>	
-                                                          <div className="notifications-text">Last 2 days left for the project to be completed</div>
-                                                          <div className="notifications-info">
-                                                              <span className="badge badge-soft-orange">Updates</span>
-                                                              <div className="notifications-time">14 Sep, 2021</div>
-                                                          </div>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </a>
-                                      </div>
-                                      <div className="dropdown-footer"><a href="#"><u>View all notifications</u></a></div>
-                                  </div>
-                              </div>
-                          </li>
-                          */}
-
-
-                          <li className="nav-item">
-                              <div className="dropdown ps-2">
-                                  <a className=" dropdown-toggle no-caret" href="#" role="button" data-bs-display="static" data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="outside" aria-expanded="false">
-                                      <div className="avatar avatar-rounded avatar-xs">
-                                          <img src="/dist/img/avatar12.jpg" alt="user" className="avatar-img"/>
-                                      </div>
-                                  </a>
-                                  <div className={isActive ? 'dropdown-menu dropdown-menu-end show showSlow' : 'dropdown-menu dropdown-menu-end showSlow'}>
-                                      <div className="p-2">
-                                          <div className="media">
-                                              <div className="media-head me-2">
-                                                  <div className="avatar avatar-primary avatar-sm avatar-rounded">
-                                                      <span className="initial-wrap">{}</span>
-                                                  </div>
-                                              </div>
-                                              <div className="media-body">
-                                                  <div className="fs-7">{}</div>
-                                                  <a href="/login" className="d-block fs-8 link-secondary" onClick={signOut}><u>Դուրս գալ</u></a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <div className="dropdown-divider"></div>
-                                      <a className="dropdown-item" href="profile.html">Profile</a>
-                                      <a className="dropdown-item" href="/privacy-policy"><span className="me-2">Offers</span><span className="badge badge-sm badge-soft-pink">2</span></a><div className="dropdown-divider"></div>
-                                      <h6 className="dropdown-header">Manage Account</h6>
-                                      <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="credit-card"></i></span><span>Payment methods</span></a>
-                                      <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="check-square"></i></span><span>Subscriptions</span></a>
-                                      <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="settings"></i></span><span>Settings</span></a>
-                                      <div className="dropdown-divider"></div>
-                                      <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="tag"></i></span><span>Raise a ticket</span></a>
+                                        <h6 className="dropdown-header">Help</h6>
+                                        <a href="/privacy-policy" className="dropdown-item">
+                                            <div className="media align-items-center">
+                                                <div className="media-head me-2">
+                                                    <div className="avatar avatar-icon avatar-xs avatar-soft-light avatar-rounded">
+                                                        <span className="initial-wrap">
+                                                            <span className="svg-icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-corner-down-right" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                    <path d="M6 6v6a3 3 0 0 0 3 3h10l-4 -4m0 8l4 -4"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div className="media-body">
+                                                    How to setup theme?
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="/privacy-policy" className="dropdown-item">
+                                            <div className="media align-items-center">
+                                                <div className="media-head me-2">
+                                                    <div className="avatar avatar-icon avatar-xs avatar-soft-light avatar-rounded">
+                                                        <span className="initial-wrap">
+                                                            <span className="svg-icon">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-corner-down-right" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                    <path d="M6 6v6a3 3 0 0 0 3 3h10l-4 -4m0 8l4 -4"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div className="media-body">
+                                                    View detail documentation
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div className="dropdown-divider"></div>
+                                        <h6 className="dropdown-header">Users</h6>
+                                        <a href="/privacy-policy" className="dropdown-item">
+                                            <div className="media align-items-center">
+                                                <div className="media-head me-2">
+                                                    <div className="avatar avatar-xs avatar-rounded">
+                                                        <img src="/dist/img/avatar3.jpg" alt="user" className="avatar-img"/>
+                                                    </div>
+                                                </div>
+                                                <div className="media-body">
+                                                    Sarah Jone
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="/privacy-policy" className="dropdown-item">
+                                            <div className="media align-items-center">
+                                                <div className="media-head me-2">
+                                                    <div className="avatar avatar-xs avatar-soft-primary avatar-rounded">
+                                                        <span className="initial-wrap"></span>
+                                                    </div>
+                                                </div>
+                                                <div className="media-body">
+                                                    Joe Jackson
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="/privacy-policy" className="dropdown-item">
+                                            <div className="media align-items-center">
+                                                <div className="media-head me-2">
+                                                    <div className="avatar avatar-xs avatar-rounded">
+                                                        <img src="/dist/img/avatar4.jpg" alt="user" className="avatar-img"/>
+                                                    </div>
+                                                </div>
+                                                <div className="media-body">
+                                                    Maria Richard
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div className="dropdown-footer d-xl-flex d-none">
+                                        <a href="/privacy-policy">
+                                            <u>Search all</u>
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                            {/* /Search */}
+                        </div>
+                        {/* /Start Nav */}
+                        {/* End Nav */}
+                        <div className="nav-end-wrap" onClick={menuClick}>
+                            <ul className="navbar-nav flex-row">
+                            {/*
+                                <li className="nav-item">
+                                    <a href="email.html" className="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover"><span className="icon"><span className=" position-relative"><span className="feather-icon"><i data-feather="inbox"></i></span><span className="badge badge-sm badge-soft-primary badge-sm badge-pill position-top-end-overflow-1">4</span></span></span></a>
+                                </li>
+                            
+                                <li className="nav-item">
+                                    <div className="dropdown dropdown-notifications">
+                                        <a href="#" className="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover dropdown-toggle no-caret" data-bs-toggle="dropdown" data-dropdown-animation role="button" aria-haspopup="true" aria-expanded="false"><span className="icon"><span className="position-relative"><span className="feather-icon"><i data-feather="bell"></i></span><span className="badge badge-success badge-indicator position-top-end-overflow-1"></span></span></span></a>
+                                        <div className="dropdown-menu dropdown-menu-end p-0">
+                                            <h6 className="dropdown-header px-4 fs-6">Notifications<a href="#" className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover"><span className="icon"><span className="feather-icon"><i data-feather="settings"></i></span></span></a>
+                                            </h6>
+                                            <div data-simplebar className="dropdown-body  p-2">
+                                                <a href="#" className="dropdown-item">
+                                                    <div className="media">
+                                                        <div className="media-head">
+                                                            <div className="avatar avatar-rounded avatar-sm">
+                                                                <img src="dist/img/avatar2.jpg" alt="user" className="avatar-img"/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="media-body">
+                                                            <div>
+                                                                <div className="notifications-text">Morgan Freeman accepted your invitation to join the team</div>
+                                                                <div className="notifications-info">
+                                                                    <span className="badge badge-soft-success">Collaboration</span>
+                                                                    <div className="notifications-time">Today, 10:14 PM</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a href="#" className="dropdown-item">
+                                                    <div className="media">
+                                                        <div className="media-head">
+                                                            <div className="avatar  avatar-icon avatar-sm avatar-success avatar-rounded">
+                                                                <span className="initial-wrap">
+                                                                    <span className="feather-icon"><i data-feather="inbox"></i></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="media-body">
+                                                            <div>
+                                                                <div className="notifications-text">New message received from Alan Rickman</div>
+                                                                <div className="notifications-info">
+                                                                    <div className="notifications-time">Today, 7:51 AM</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a href="#" className="dropdown-item">
+                                                    <div className="media">
+                                                        <div className="media-head">
+                                                            <div className="avatar  avatar-icon avatar-sm avatar-pink avatar-rounded">
+                                                                <span className="initial-wrap">
+                                                                    <span className="feather-icon"><i data-feather="clock"></i></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="media-body">
+                                                            <div>
+                                                                <div className="notifications-text">You have a follow up with Jampack Head on Friday, Dec 19 at 9:30 am</div>
+                                                                <div className="notifications-info">
+                                                                    <div className="notifications-time">Yesterday, 9:25 PM</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a href="#" className="dropdown-item">
+                                                    <div className="media">
+                                                        <div className="media-head">
+                                                            <div className="avatar avatar-sm avatar-rounded">
+                                                                <img src="dist/img/avatar3.jpg" alt="user" className="avatar-img"/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="media-body">
+                                                            <div>
+                                                                <div className="notifications-text">Application of Sarah Williams is waiting for your approval</div>
+                                                                <div className="notifications-info">
+                                                                    <div className="notifications-time">Today 10:14 PM</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a href="#" className="dropdown-item">
+                                                    <div className="media">
+                                                        <div className="media-head">
+                                                            <div className="avatar avatar-sm avatar-rounded">
+                                                                <img src="dist/img/avatar10.jpg" alt="user" className="avatar-img"/>
+                                                            </div>
+                                                        </div>
+                                                        <div className="media-body">
+                                                            <div>	
+                                                                <div className="notifications-text">Winston Churchil shared a document with you</div>
+                                                                <div className="notifications-info">
+                                                                    <span className="badge badge-soft-violet">File Manager</span>
+                                                                    <div className="notifications-time">2 Oct, 2021</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a href="#" className="dropdown-item">
+                                                    <div className="media">
+                                                        <div className="media-head">
+                                                            <div className="avatar  avatar-icon avatar-sm avatar-danger avatar-rounded">
+                                                                <span className="initial-wrap">
+                                                                    <span className="feather-icon"><i data-feather="calendar"></i></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="media-body">
+                                                            <div>	
+                                                                <div className="notifications-text">Last 2 days left for the project to be completed</div>
+                                                                <div className="notifications-info">
+                                                                    <span className="badge badge-soft-orange">Updates</span>
+                                                                    <div className="notifications-time">14 Sep, 2021</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div className="dropdown-footer"><a href="#"><u>View all notifications</u></a></div>
+                                        </div>
+                                    </div>
+                                </li>
+                                */}
+                                <li className="nav-item">
+                                    <div className="dropdown ps-2">
+                                        <a className=" dropdown-toggle no-caret" href="#" role="button" data-bs-display="static" data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="outside" aria-expanded="false">
+                                            <div className="avatar avatar-rounded avatar-xs">
+                                                <img src="/dist/img/avatar12.jpg" alt="user" className="avatar-img"/>
+                                            </div>
+                                        </a>
+                                        <div className={isActive ? 'dropdown-menu dropdown-menu-end show showSlow' : 'dropdown-menu dropdown-menu-end showSlow'}>
+                                            <div className="p-2">
+                                                <div className="media">
+                                                    <div className="media-head me-2">
+                                                        <div className="avatar avatar-primary avatar-sm avatar-rounded">
+                                                            <span className="initial-wrap">{}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div className="media-body">
+                                                        <div className="fs-7">{}</div>
+                                                        <a href="/login" className="d-block fs-8 link-secondary" onClick={signOut}><u>Դուրս գալ</u></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="dropdown-divider"></div>
+                                                <a className="dropdown-item" href="profile.html">Profile</a>
+                                                <a className="dropdown-item" href="/privacy-policy">
+                                                    <span className="me-2">Offers</span>
+                                                    <span className="badge badge-sm badge-soft-pink">2</span>
+                                                </a>
+                                                <div className="dropdown-divider"></div>
+                                                <h6 className="dropdown-header">Manage Account</h6>
+                                                <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="credit-card"></i></span><span>Payment methods</span></a>
+                                                <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="check-square"></i></span><span>Subscriptions</span></a>
+                                                <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="settings"></i></span><span>Settings</span></a>
+                                                <div className="dropdown-divider"></div>
+                                                <a className="dropdown-item" href="/privacy-policy"><span className="dropdown-icon feather-icon"><i data-feather="tag"></i></span><span>Raise a ticket</span></a>
                                       <div className="dropdown-divider"></div>
                                       <a className="dropdown-item" href="/privacy-policy">Terms & Conditions</a>
                                       <a className="dropdown-item" href="/privacy-policy">Help & Support</a>
@@ -994,113 +997,115 @@ const MainTemplate = () => {
                           <p className="mb-2">This is jampack's beta version please sign up now to get early access to our full version</p>
                           <a className="d-block mb-2" href="#"><u>Give Feedback</u></a>		
                       </div>
-                      <div className="input-group d-none">
-                          <div className="input-group-text overflow-show border-0">
-                              <button className="btn btn-icon btn-flush-dark flush-soft-hover btn-rounded dropdown-toggle no-caret" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
-                                  <span className="icon"><span className="feather-icon"><i data-feather="share"></i></span></span>
-                              </button>
-                              <div className="dropdown-menu">
-                                  <a className="dropdown-item" href="#">
-                                      <div className="d-flex align-items-center">
-                                          <div className="avatar avatar-icon avatar-xs avatar-soft-primary avatar-rounded me-3">
-                                              <span className="initial-wrap">
-                                                  <i className="ri-image-line"></i>
-                                              </span>
-                                          </div>
-                                          <div>
-                                              <span className="h6 mb-0">Photo or Video Library</span>
-                                          </div>
-                                      </div>
-                                  </a>
-                                  <a className="dropdown-item" href="#">
-                                      <div className="d-flex align-items-center">
-                                          <div className="avatar avatar-icon avatar-xs avatar-soft-info avatar-rounded me-3">
-                                              <span className="initial-wrap">
-                                                  <i className="ri-file-4-line"></i>
-                                              </span>
-                                          </div>
-                                          <div>
-                                              <span className="h6 mb-0">Documents</span>
-                                          </div>
-                                      </div>
-                                  </a>
-                                  <a className="dropdown-item" href="#">
-                                      <div className="d-flex align-items-center">
-                                          <div className="avatar avatar-icon avatar-xs avatar-soft-success avatar-rounded me-3">
-                                              <span className="initial-wrap">
-                                                  <i className="ri-map-pin-line"></i>
-                                              </span>
-                                          </div>
-                                          <div>
-                                              <span className="h6 mb-0">Location</span>
-                                          </div>
-                                      </div>
-                                  </a>
-                                  <a className="dropdown-item" href="#">
-                                      <div className="d-flex align-items-center">
-                                          <div className="avatar avatar-icon avatar-xs avatar-soft-blue avatar-rounded me-3">
-                                              <span className="initial-wrap">
-                                                  <i className="ri-contacts-line"></i>
-                                              </span>
-                                          </div>
-                                          <div>
-                                              <span className="h6 mb-0">Contact</span>
-                                          </div>
-                                      </div>
-                                  </a>
-                              </div>
-                          </div>
-                          <input type="text" id="input_msg_chat_popup" name="send-msg" className="input-msg-send form-control border-0 shadow-none" placeholder="Type something..."/>
-                          <div className="input-group-text overflow-show border-0">
-                              <button className="btn btn-icon btn-flush-dark flush-soft-hover btn-rounded">
-                                  <span className="icon"><span className="feather-icon"><i data-feather="smile"></i></span></span>
-                              </button>
-                          </div>
-                      </div>
-                      <div className="footer-copy-text">Powered by <a className="brand-link" href="#"><img src="/dist/img/logo-light.png" alt="logo-brand"/></a></div>
-                  </footer>
-              </div>
-              {/*
-              <a href="#" className="btn btn-icon btn-floating btn-primary btn-lg btn-rounded btn-popup-open">
-                  <span className="icon">
-                      <span className="feather-icon"><i data-feather="message-circle"></i></span>
-                  </span>
-              </a>
-              */}
-              <div className="chat-popover shadow-xl"><p>Try Jampack Chat for free and connect with your customers now!</p></div>
-              {/* /Chat Popup */}
-  
-              {/* Main Content */}
+                        <div className="input-group d-none">
+                            <div className="input-group-text overflow-show border-0">
+                                <button className="btn btn-icon btn-flush-dark flush-soft-hover btn-rounded dropdown-toggle no-caret" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+                                    <span className="icon"><span className="feather-icon"><i data-feather="share"></i></span></span>
+                                </button>
+                                <div className="dropdown-menu">
+                                    <a className="dropdown-item" href="#">
+                                        <div className="d-flex align-items-center">
+                                            <div className="avatar avatar-icon avatar-xs avatar-soft-primary avatar-rounded me-3">
+                                                <span className="initial-wrap">
+                                                    <i className="ri-image-line"></i>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span className="h6 mb-0">Photo or Video Library</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a className="dropdown-item" href="#">
+                                        <div className="d-flex align-items-center">
+                                            <div className="avatar avatar-icon avatar-xs avatar-soft-info avatar-rounded me-3">
+                                                <span className="initial-wrap">
+                                                    <i className="ri-file-4-line"></i>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span className="h6 mb-0">Documents</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a className="dropdown-item" href="#">
+                                        <div className="d-flex align-items-center">
+                                            <div className="avatar avatar-icon avatar-xs avatar-soft-success avatar-rounded me-3">
+                                                <span className="initial-wrap">
+                                                    <i className="ri-map-pin-line"></i>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span className="h6 mb-0">Location</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a className="dropdown-item" href="/contact">
+                                        <div className="d-flex align-items-center">
+                                            <div className="avatar avatar-icon avatar-xs avatar-soft-blue avatar-rounded me-3">
+                                                <span className="initial-wrap">
+                                                    <i className="ri-contacts-line"></i>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span className="h6 mb-0">Contact</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <input type="text" id="input_msg_chat_popup" name="send-msg" className="input-msg-send form-control border-0 shadow-none" placeholder="Type something..."/>
+                            <div className="input-group-text overflow-show border-0">
+                                <button className="btn btn-icon btn-flush-dark flush-soft-hover btn-rounded">
+                                    <span className="icon"><span className="feather-icon"><i data-feather="smile"></i></span></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div className="footer-copy-text">Powered by 
+                            <a className="brand-link" href="#">
+                                <img src="/dist/img/logo-light.png" alt="logo-brand"/>
+                            </a>
+                        </div>
+                    </footer>
+                </div>
+                {/*
+                <a href="#" className="btn btn-icon btn-floating btn-primary btn-lg btn-rounded btn-popup-open">
+                    <span className="icon">
+                        <span className="feather-icon"><i data-feather="message-circle"></i></span>
+                    </span>
+                </a>
+                */}
+                <div className="chat-popover shadow-xl"><p>Try Jampack Chat for free and connect with your customers now!</p></div>
+                {/* /Chat Popup */}
+                
+                {/* Main Content */}
                 <div className="hk-pg-wrapper">
-                    <div className="container-xxl">
-
-                        <Outlet/>  
-                       
+                    {/*<div className="container-xxl">*/}
+                        <Outlet/>
                     </div>
                     {/* Page Footer */}
                     <div className="hk-footer">
-                      <footer className="container-xxl footer">
-                      <div className="row">
-                            <div className="col-xl-8 text-center">
-                                <p className="footer-text pb-0"><span className="copy-text">Vteam LIMS © {new Date().getFullYear()}</span> 
-                                <span className="footer-link-sep">|</span>
-                                <a href="/privacy-policy" className="" target="_blank">Գաղտնիության քաղաքականություն</a>
-                                {/*
-                                <span className="footer-link-sep">|</span><a href="#" className="" target="_blank">T&C</a>
-                                <span className="footer-link-sep">|</span><a href="#" className="" target="_blank">System Status</a>
-                                */}
-                                </p>
+                        <footer className="container-xxl footer">
+                            <div className="row">
+                                <div className="col-xl-8 text-center">
+                                    <p className="footer-text pb-0">
+                                        <span className="copy-text">Vteam LIMS © {new Date().getFullYear()}</span> 
+                                        <span className="footer-link-sep">|</span>
+                                        <a href="/privacy-policy" className="" target="_blank">Գաղտնիության քաղաքականություն</a>
+                                        {/*
+                                        <span className="footer-link-sep">|</span><a href="#" className="" target="_blank">T&C</a>
+                                        <span className="footer-link-sep">|</span><a href="#" className="" target="_blank">System Status</a>
+                                        */}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                      </footer>
+                        </footer>
                     </div>
                     {/* Page Footer */}  
-                </div>
-            {/* /Main Content */}
+                {/*</div>*/}
+                {/* /Main Content */}
             </div>
             {/* /Wrapper */}  
         </section>
-
     )
 }
 
