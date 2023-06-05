@@ -561,11 +561,16 @@ const MainTemplate = () => {
                                           <span className="nav-link-text">Գնացուցակ</span>
                                       </Link>
                                   </li>
+
+
+
+
+
                                   <li className="nav-item">
-                                      <Link className="nav-link" to="#" data-bs-toggle="collapse" data-bs-target="#dash_scrumboard">
+                                      <Link className="nav-link" to="/users">
                                           <span className="nav-icon-wrap position-relative">
-                                              <span className="badge badge-sm badge-primary badge-sm badge-pill position-top-end-overflow">3</span>
                                               <span className="svg-icon">
+                                              <span className="badge badge-sm badge-primary badge-sm badge-pill position-top-end-overflow">3</span>
                                               <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <title/>
                                                     <g id="Complete">
@@ -581,23 +586,13 @@ const MainTemplate = () => {
                                           </span>
                                           <span className="nav-link-text">Աշխատակիցներ</span>
                                       </Link>
-                                      <ul id="dash_scrumboard" className="nav flex-column collapse  nav-children">
-                                          <li className="nav-item">
-                                              <ul className="nav flex-column">
-                                                  <li className="nav-item">
-                                                      <a className="nav-link" href="projects-board.html"><span className="nav-link-text">All Boards</span></a>
-                                                  </li>
-                                                  
-                                                  <li className="nav-item">
-                                                      <a className="nav-link" href="kanban-board.html"><span className="nav-link-text">Project Kanban</span></a>
-                                                  </li>
-                                                  <li className="nav-item">
-                                                      <a className="nav-link" href="pipeline.html"><span className="nav-link-text">Pipeline Kanban</span></a>
-                                                  </li>
-                                              </ul>	
-                                          </li>	
-                                      </ul>	
                                   </li>
+
+
+
+
+
+                                  
                                   <li className="nav-item">
                                       <Link className="nav-link" to="#" data-bs-toggle="collapse" data-bs-target="#dash_contact">
                                           <span className="nav-icon-wrap">

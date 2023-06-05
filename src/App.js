@@ -2,6 +2,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Home from './components/Home';
+import Users from './components/Users';
 import Layout from './components/Layout';
 import Editor from './components/Editor';
 import Admin from './components/Admin';
@@ -57,6 +58,10 @@ function App() {
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
                 <Route path="clients" element={<Clients />} />
+              </Route>
+
+              <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+                <Route path="users" element={<Users />} />
               </Route>
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>

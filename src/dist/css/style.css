@@ -78436,6 +78436,13 @@ span[data-notify="icon"] {
   border-color: #262a2e;
 }
 
+.dropdown-menu-active {
+  position: absolute; 
+  inset: 0px auto auto 0px; 
+  margin: 0px; 
+  transform: translate(0px, 33px);
+}
+
 .dropdown-divider {
   border-color: #eaeaea;
   margin-right: -.5rem;
