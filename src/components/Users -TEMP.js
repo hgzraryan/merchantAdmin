@@ -9,12 +9,22 @@ import ReactPaginate from "react-paginate"
 
 
 import Loading from './Loading';
+//import faker from 'react-fakers';
+
+
 import { useTable } from 'react-table';
 import { Modal, Button } from 'react-bootstrap';
 
 
-	
-  
+const generateData = (start, length = 20) =>
+  Array.from({ length }).map((_, i) => ({
+    id: 12,
+    name: '33e3e3',
+    address: 'wewewewew',
+    email: 'wewewew@as.as',
+    phone: 'dded',
+    dob: 'eededed',
+  }));
 
 
 const Users = () => {
@@ -22,10 +32,6 @@ const Users = () => {
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
-
-
-
-
 
     const [currentPage,setCurrentPage] =  useState(1)
     const [usersPerPage] =  useState(8)
@@ -59,30 +65,6 @@ const Users = () => {
             controller.abort();
         }
     }, [])
-	
-	
-	
-	
-	
-	
-	
-const generateData = (start, length = 20) =>
-  Array.from({ length }).map((_, i) => ({
-    id: 12,
-    name: '33e3e3',
-    address: 'wewewewew',
-    email: 'wewewew@as.as',
-    phone: 'dded',
-    dob: 'eededed',
-  }));
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	//-------------------------
     const handlePageClick = ({ selected: selectedPage }) => {
@@ -144,28 +126,28 @@ const generateData = (start, length = 20) =>
      const columns = React.useMemo(
        () => [
          {
-           Header: 'Username',
-           accessor: 'username',
+           Header: 'ID',
+           accessor: 'id',
          },
          {
-           Header: 'Firstname',
-           accessor: 'firstname',
+           Header: 'Name',
+           accessor: 'name',
          },
          {
-           Header: 'Lastname',
-           accessor: 'lastname',
+           Header: 'Address',
+           accessor: 'address',
          },
          {
-           Header: 'Email Address',
+           Header: 'Email',
            accessor: 'email',
          },
          {
-           Header: 'Roles',
-           accessor: 'roles',
+           Header: 'Phone',
+           accessor: 'phone',
          },
          {
-           Header: 'Actions',
-           accessor: 'actions',
+           Header: 'Date of Birth',
+           accessor: 'dob',
          },
        ],
        []
@@ -214,19 +196,6 @@ const generateData = (start, length = 20) =>
                                         <Button onClick={() => setIsOpen(true)}>
                                              <span className="feather-icon dropdown-icon"></span><span>Աշխատակից</span>
                                         </Button>
-										
-										<Modal show={isOpen} size='xl' onHide={() => setIsOpen(false)}>
-										   <Modal.Header closeButton>
-											 <Modal.Title style={{ width: '100%', textAlign: 'center' }}>
-											   React Scrollable Table Modal
-											 </Modal.Title>
-										   </Modal.Header>
-										   <Modal.Body>
-												<div>
-													hello
-												</div>
-										   </Modal.Body>
-										 </Modal>
                                         
                                         {/*
 										<a className="dropdown-item" href="#">Type2</a>
@@ -279,61 +248,88 @@ const generateData = (start, length = 20) =>
                                  <div className="contact-body">
                                      <div data-simplebar className="nicescroll-bar">
                                          <div className="contact-list-view" style={{height:'650px', overflow:"scroll"}}>
- 
-											
-											
-											<div id='scrollableDiv' style={{ height: '80vh', overflow: 'auto' }}>
-											   <InfiniteScroll
-												 dataLength={items.length}
-												 next={fetchMoreData}
-												 hasMore={true}
-												 loader={<Loading />}
-												 scrollableTarget='scrollableDiv'
-											   >
-												 <table {...getTableProps()} className='table table-striped'>
-												   <thead>
-													 {headerGroups.map((headerGroup) => (
-													   <tr {...headerGroup.getHeaderGroupProps()}>
-														 {headerGroup.headers.map((column) => (
-														   <th {...column.getHeaderProps()}>
-															 {column.render('Header')}
-														   </th>
-														 ))}
-													   </tr>
-													 ))}
-												   </thead>
-												   
-												   
-												   
-												   
-												   <tbody {...getTableBodyProps()}>
-													 {rows.map((row, i) => {
-													   prepareRow(row);
-													   return (
-														 <tr {...row.getRowProps()}>
-														   {row.cells.map((cell) => {
-															 return (
-															   <td {...cell.getCellProps()}>
-																 {cell.render('Cell')}
-															   </td>
-															 );
-														   })}
-														 </tr>
-													   );
-													 })}
-												   </tbody>
-												   
-												   
-												   
-												   
-												   
-												   
-												 </table>
-											   </InfiniteScroll>
-											 </div>
-											
-											
-											
+                                             <table id="datable_1" className="table nowrap w-100 mb-5">
+                                                 <thead>
+                                                     <tr>
+                                                         <th><span className="form-check mb-0">
+                                                             <input type="checkbox" className="form-check-input check-select-all" id="customCheck1"/>
+                                                             <label className="form-check-label" htmlFor="customCheck1"></label>
+                                                         </span></th>
+                                                         <th>Username</th>
+                                                         <th>Firstname</th>
+                                                         <th>Lastname</th>
+                                                         <th>Email Address</th>
+                                                         <th>Roles</th>
+                                                         <th>Actions</th>
+                                                     </tr>
+                                                 </thead>
+                                                 <tbody >
+                                                 {currentUsers.length ?
+                                                     currentUsers.map((user) => 
+                                                     <tr key={user._id}>
+                                                        <td><input type="checkbox" className="form-check-input check-select-all" id="customCheck1"/></td>
+                                                        
+                                                         <td>
+                                                             <div className="media align-items-center">
+                                                                 <div className="media-head me-2">
+                                                                     <div className="avatar avatar-xs avatar-rounded">
+                                                                         <img src={user.img ?? "dist/img/avatar1.jpg"} alt="user" className="avatar-img"/>
+                                                                     </div>
+                                                                 </div>
+                                                                 <div className="media-body">
+                                                                     <span className="d-block text-high-em">{user.username}</span> 
+                                                                 </div>
+                                                             </div>
+                                                         </td>
+                                                         <td>{user.firstname}</td>
+                                                         <td>{user.lastname}</td>
+                                                         <td className="text-truncate">{user.email ?? 'test@mail.ru'}</td>
+                                                         <td>
+                                                             {Object.keys(user.roles).map((role,idx) => 
+                                                             <span key={idx} className={setUserTypeStyle(role)}>{role}</span>   )}
+                                                         </td>
+                                                         <td>
+                                                             <div className="d-flex align-items-center">
+                                                                 <div className="d-flex">
+                                                                     <a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Archive" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="archive" /></span></span></a>
+                                                                     <a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Edit" href="edit-contact.html"><span className="icon"><span className="feather-icon"><FeatherIcon icon="edit" /></span></span></a>
+                                                                     <a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover del-button" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Delete" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="trash" /></span></span></a>
+                                                                 </div>
+                                                                 <div className="dropdown">
+                                                                     <button className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover dropdown-toggle no-caret" aria-expanded="false" data-bs-toggle="dropdown"><span className="icon"><span className="feather-icon"><FeatherIcon icon="more-vertical" /></span></span></button>
+                                                                     <div className="dropdown-menu dropdown-menu-end">
+                                                                         <a className="dropdown-item" href="edit-contact.html"><span className="feather-icon dropdown-icon"><FeatherIcon icon="list" /><FeatherIcon icon="edit" /></span><span>Edit Contact</span></a>
+                                                                         <a className="dropdown-item" href="#"><span className="feather-icon dropdown-icon"><FeatherIcon icon="list" /><i data-feather="trash-2"></i></span><span>Delete</span></a>
+                                                                         <a className="dropdown-item" href="#"><span className="feather-icon dropdown-icon"><FeatherIcon icon="list" /><i data-feather="copy"></i></span><span>Duplicate</span></a>
+                                                                         <div className="dropdown-divider"></div>
+                                                                         <h6 className="dropdown-header dropdown-header-bold">Change Labels</h6>
+                                                                         <a className="dropdown-item" href="#">Design</a>
+                                                                         <a className="dropdown-item" href="#">Developer</a>
+                                                                         <a className="dropdown-item" href="#">Inventory</a>
+                                                                         <a className="dropdown-item" href="#">Human Resource</a>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                         </td>
+                                                     </tr>                                                     
+                                                 ):(<tr><td><LoadingSpinner/></td></tr> )}
+                                                 </tbody>
+                                             </table>   
+											 <ReactPaginate
+                                            previousLabel = {"Previous"}    
+                                            nextLabel = {"Next"}
+                                            pageCount = {pageCount}
+                                            onPageChange = {handlePageClick}
+                                            initialPage = {0}
+                                            containerClassName={"pagination"}
+                                            pageLinkClassName = {"page-link"}
+                                            pageClassName = {"page-item"}
+                                            previousLinkClassName={"page-link"}
+                                            nextLinkClassName={"page-link"}
+                                            disabledLinkClassName={"disabled"}
+                                            //activeLinkClassName={"active"}
+                                            activeClassName={"active"}
+											/>
 										</div>
                                      </div>
                                  </div>
@@ -341,8 +337,30 @@ const generateData = (start, length = 20) =>
                          </div>
                      </div>
 
-					
-					 
+					 <div
+					   style={{
+						 display: 'flex',
+						 justifyContent: 'center',
+						 alignItems: 'center',
+						 height: '100vh',
+					   }}
+					 >
+					   <Button variant='primary' onClick={() => setIsOpen(true)}>
+						 Open Modal
+					   </Button>
+					 </div>
+					 <Modal show={isOpen} size='xl' onHide={() => setIsOpen(false)}>
+					   <Modal.Header closeButton>
+						 <Modal.Title style={{ width: '100%', textAlign: 'center' }}>
+						   React Scrollable Table Modal
+						 </Modal.Title>
+					   </Modal.Header>
+					   <Modal.Body>
+							<div>
+								hello
+							</div>
+					   </Modal.Body>
+					 </Modal>
 	 
 	 
 	 
@@ -356,7 +374,7 @@ const generateData = (start, length = 20) =>
 	 
 	 
 	    {/*
-   <!-- <div id='scrollableDiv' style={{ height: '80vh', overflow: 'auto' }}>
+    <div id='scrollableDiv' style={{ height: '80vh', overflow: 'auto' }}>
            <InfiniteScroll
              dataLength={items.length}
              next={fetchMoreData}
@@ -395,7 +413,7 @@ const generateData = (start, length = 20) =>
              </table>
            </InfiniteScroll>
          </div>
-   -->
+   
   */}
 	 
 	 
