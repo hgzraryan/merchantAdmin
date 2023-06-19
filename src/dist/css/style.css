@@ -82067,7 +82067,7 @@ Project:	Jampack
 -------------------------------------------------------------------*/
 /*Footer*/
 [data-footer="simple"].hk-wrapper .hk-pg-wrapper, .footer-simple-example.hk-wrapper .hk-pg-wrapper {
-  padding-bottom: 120px;
+  /*padding-bottom: 120px;*/
 }
 [data-footer="simple"] .hk-footer, .footer-simple-example .hk-footer {
   position: absolute;

@@ -19,6 +19,7 @@ import { Modal, Button } from 'react-bootstrap';
 
 const Users = () => {
     const [users, setUsers] = useState([]);
+    const [usercount, setUserCount] = useState([]);
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
@@ -41,11 +42,14 @@ const Users = () => {
 
         const getUsers = async () => {
             try {
-                const response = await axiosPrivate.get('/users', {
-                    signal: controller.signal
+                const response = await axiosPrivate.post('/users', {
+                    signal: controller.signal,
+					page:1,
+					onPage:1
                 });
-                //console.log(response.data);
-                isMounted && setUsers(response.data);
+                console.log(response);
+                isMounted && setUsers(response.data.jsonString);
+                isMounted && setUserCount(response.data.count);
             } catch (err) {
                 console.error(err);
                 navigate('/login', { state: { from: location }, replace: true });
@@ -62,32 +66,44 @@ const Users = () => {
 	
 	
 	
-	
-	
+
+
 	
 	
 const generateData = (start, length = 20) =>
   Array.from({ length }).map((_, i) => ({
-    id: 12,
-    name: '33e3e3',
-    address: 'wewewewew',
-    email: 'wewewew@as.as',
-    phone: 'dded',
-    dob: 'eededed',
+    username: 'hgzraryan',
+    firstname: 'Hartyun',
+    lastname: 'Gzraryan',
+    email: 'hgzraryan@yandex.ru',
+    roles: 'dded',
   }));
 	
+	console.log(generateData);
 	
 	
-	
-	
+	 const getUsers = async () => {
+            try {
+                const response = await axiosPrivate.post('/users', {
+                    
+					page:1,
+					onPage:1
+                });
+                console.log(response);
+                setUsers(response.data.jsonString);
+                setUserCount(response.data.count);
+            } catch (err) {
+                console.error(err);
+                navigate('/login', { state: { from: location }, replace: true });
+            }
+        }
+
 	
 	
 	
 	
 	//-------------------------
-    const handlePageClick = ({ selected: selectedPage }) => {
-        setCurrentPage(selectedPage);
-    }
+
     const refreshPage = () => {
         let paglink = document.querySelectorAll('.page-item');
         paglink[0].firstChild.click();
@@ -218,12 +234,189 @@ const generateData = (start, length = 20) =>
 										<Modal show={isOpen} size='xl' onHide={() => setIsOpen(false)}>
 										   <Modal.Header closeButton>
 											 <Modal.Title style={{ width: '100%', textAlign: 'center' }}>
-											   React Scrollable Table Modal
+											   Ավելացնել նոր աշխատակից
 											 </Modal.Title>
 										   </Modal.Header>
 										   <Modal.Body>
 												<div>
-													hello
+													<div className="contact-body contact-detail-body">
+														<div data-simplebar className="nicescroll-bar">
+															<div className="d-flex flex-xxl-nowrap flex-wrap">
+																<div className="contact-info w-100">
+																	
+																	<div className="text-center mt-5">
+																		<div className="dropify-circle edit-img">
+																			<input type="file"  className="dropify-1" data-default-file="dist/img/avatar2.jpg"/>
+																		</div>
+																		<div className="cp-name text-truncate mt-3">Mendaline Shane</div>
+																		<p>No phone calls Always busy</p>
+																		<div className="rating rating-yellow my-rating-4" data-rating="3"></div>
+																		<ul className="hk-list hk-list-sm justify-content-center mt-2">
+																			<li>
+																				<a className="btn btn-icon btn-soft-primary btn-rounded" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="mail" /></span></span></a>
+																			</li>
+																			<li>
+																				<a className="btn btn-icon btn-soft-success btn-rounded" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="phone" /></span></span></a>
+																			</li>
+																			<li>
+																				<a className="btn btn-icon btn-soft-danger btn-rounded" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="video" /></span></span></a>
+																			</li>
+																		</ul>
+																	</div>
+																	<div className="card">
+																		<div className="card-header">
+																			<a href="#">Անձնական տվյալներ</a>
+																			<button className="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit"><span className="icon" data-bs-toggle="modal" data-bs-target="#editInfo"><span class="feather-icon"><FeatherIcon icon="edit-2" /></span></span></button>
+																		</div>
+																		<div className="card-body">
+																			
+																			
+																			<div className="modal-body">
+																				<form>
+																					<div className="row gx-3">
+																						<div className="col-sm-6">
+																							<div className="form-group">
+																								<label className="form-label">Անուն</label>
+																								<input className="form-control" type="text" value="" placeholder="Անուն" name="name" />
+																							</div>
+																						</div>
+																						<div className="col-sm-6">
+																							<div className="form-group">
+																								<label className="form-label">Ազգանուն</label>
+																								<input className="form-control" type="text" value="" placeholder="Ազգանուն" name="lastname" />
+																							</div>
+																						</div>
+																					</div>
+																					<div className="row gx-3">
+																						<div className="col-sm-6">
+																							<div className="form-group">
+																								<label className="form-label">Էլ․ հասցե</label>
+																								<input className="form-control" type="email" value="" placeholder="Email" name="email" />
+																							</div>
+																						</div>
+																						<div className="col-sm-6">
+																							<div className="form-group">
+																								<label className="form-label">Հեռախոս</label>
+																								<input className="form-control" type="text" value="" placeholder="Հեռախոս" name="phone" />
+																							</div>
+																						</div>
+																					</div>
+																					<div className="row gx-3">
+																						<div className="col-sm-6">
+																							<div className="form-group">
+																								<label className="form-label">Ծածկանուն</label>
+																								<input className="form-control" type="text" value="" placeholder="Ծածկանուն" name="username" />
+																							</div>
+																						</div>
+																						<div className="col-sm-6">
+																							<div className="form-group">
+																								<label className="form-label">Ծածկագիր</label>
+																								<input className="form-control" type="password" value="" placeholder="Ծածկագիր" name="password" />
+																							</div>
+																						</div>
+																					</div>
+																					<div className="row gx-3">
+																						<div className="col-sm-12">
+																							<label className="form-label">Location</label>
+																							<div className="form-group">
+																								<input className="form-control" type="text" value="Lane 1" placeholder="Line 1" name="add1" />
+																							</div>	
+																							<div className="form-group">
+																								<input className="form-control" type="text" value="Newyork" placeholder="Line 2" name="add2" />
+																							</div>
+																						</div>
+																					</div>
+																				</form>
+																			</div>
+									
+																			
+																			
+																		</div>
+																	</div>
+																	<div className="separator-full"></div>
+																	<div className="card">
+																		<div className="card-header">
+																			<a href="#">Հավելյալ տվյալներ</a>
+																			<button className="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Edit"><span class="icon"  data-bs-toggle="modal" data-bs-target="#moreContact"><span class="feather-icon"><FeatherIcon icon="edit-2" /></span></span></button>
+																		</div>
+																		<div className="card-body">
+																			<div className="modal-body">
+																				<form>
+																					<div className="row gx-3">
+																						<div className="col-sm-6">
+																							<div className="form-group">
+																								<label className="form-label">Designation</label>
+																								<input className="form-control" type="text" value="Mandaline" placeholder="First Name" name="name1" />
+																							</div>
+																						</div>
+																						<div className="col-sm-6">
+																							<div className="form-group">
+																								<label className="form-label">Company</label>
+																								<input className="form-control" type="text" value="Shane" placeholder="Last Name" name="lastname1" />
+																							</div>
+																						</div>
+																					</div>
+																					<div className="row gx-3">
+																						<div className="col-sm-6">
+																							<div className="form-group">
+																								<label className="form-label">Language</label>
+																								<input className="form-control" type="email" value="contct@hencework.com" placeholder="Email Id" name="emailid1" />
+																							</div>
+																						</div>
+																						<div className="col-sm-6">
+																							<div className="form-group">
+																								<label className="form-label">Birthday</label>
+																								<input className="form-control" type="text" value="10/24/1984" placeholder="Phone No" name="birthday1"/>
+																							</div>
+																						</div>
+																					</div>
+																					
+																				</form>
+																			</div>
+																		</div>
+																	</div>
+																	<div className="separator-full"></div>
+																	<div className="card">
+																		<div className="card-header">
+																			<a href="#">Դերեր</a>
+																			<button className="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Add Tags"><span className="icon" data-bs-toggle="modal" data-bs-target="#tagsInput"><span className="feather-icon"><FeatherIcon icon="edit-2" /></span></span></button>
+																		</div>
+																		<div className="card-body">
+																			<div className="modal-body">
+																				<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close">
+																					<span aria-hidden="true">×</span>
+																				</button>
+																				<h6 className="text-uppercase fw-bold mb-3">Add Tag</h6>
+																				<form>
+																					<div className="row gx-3">
+																						<div className="col-sm-12">
+																							<div className="form-group">
+																								<select id="input_tags_3" className="form-control" multiple="multiple">
+																									<option selected="selected">Collaborator</option>
+																									<option selected="selected">Designer</option>
+																									<option selected="selected">React Developer</option>
+																									<option selected="selected">Promotion</option>
+																									<option selected="selected">Advertisement</option>
+																								</select>
+																							</div>
+																						</div>
+																					</div>
+																					<button type="button" className="btn btn-primary float-end" data-bs-dismiss="modal">Add</button>
+																				</form>
+																			</div>
+																		</div>
+																	</div>
+
+
+																	<div className="modal-footer align-items-center">
+																		<button type="button" className="btn btn-secondary">Չեղարկել</button>
+																		<button type="button" className="btn btn-primary" data-bs-dismiss="modal">Ավելացնել</button>
+																	</div>
+																</div>
+																
+															</div>
+														</div>
+													</div>
 												</div>
 										   </Modal.Body>
 										 </Modal>
@@ -284,13 +477,14 @@ const generateData = (start, length = 20) =>
 											
 											<div id='scrollableDiv' style={{ height: '80vh', overflow: 'auto' }}>
 											   <InfiniteScroll
-												 dataLength={items.length}
-												 next={fetchMoreData}
+												 dataLength={usercount}
+												 next={getUsers}
 												 hasMore={true}
 												 loader={<Loading />}
 												 scrollableTarget='scrollableDiv'
+												 endMessage={<p>No more data to load.</p>}
 											   >
-												 <table {...getTableProps()} className='table table-striped'>
+												 <table  className='table table-striped'>
 												   <thead>
 													 {headerGroups.map((headerGroup) => (
 													   <tr {...headerGroup.getHeaderGroupProps()}>
@@ -305,7 +499,7 @@ const generateData = (start, length = 20) =>
 												   
 												   
 												   
-												   
+												   {/*
 												   <tbody {...getTableBodyProps()}>
 													 {rows.map((row, i) => {
 													   prepareRow(row);
@@ -322,6 +516,63 @@ const generateData = (start, length = 20) =>
 													   );
 													 })}
 												   </tbody>
+												   */}
+												   
+												   
+												  {users?.length &&
+                                                  (<tbody {...getTableBodyProps()}>
+                                                     {users.map((user,i) => 
+                                                     (<tr>
+                                                        <td><input type="checkbox" className="form-check-input check-select-all" id="customCheck1"/></td>
+                                                        
+                                                         <td>
+                                                             <div className="media align-items-center">
+                                                                 <div className="media-head me-2">
+                                                                     <div className="avatar avatar-xs avatar-rounded">
+                                                                         <img src={user.img ?? "dist/img/avatar1.jpg"} alt="user" className="avatar-img"/>
+                                                                     </div>
+                                                                 </div>
+                                                                 <div className="media-body">
+                                                                     <span className="d-block text-high-em">{user.username}</span> 
+                                                                 </div>
+                                                             </div>
+                                                         </td>
+                                                         <td>{user.firstname}</td>
+                                                         <td>{user.lastname}</td>
+                                                         <td className="text-truncate">{user.email ?? 'test@mail.ru'}</td>
+                                                         <td>
+                                                             {Object.keys(user.roles).map((role) => 
+                                                             <span className={setUserTypeStyle(role)}>{role}</span>   )}
+                                                         </td>
+                                                         <td>
+                                                             <div className="d-flex align-items-center">
+                                                                 <div className="d-flex">
+                                                                     <a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Archive" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="archive" /></span></span></a>
+                                                                     <a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Edit" href="edit-contact.html"><span className="icon"><span className="feather-icon"><FeatherIcon icon="edit" /></span></span></a>
+                                                                     <a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover del-button" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Delete" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="trash" /></span></span></a>
+                                                                 </div>
+                                                                 <div className="dropdown">
+                                                                     <button className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover dropdown-toggle no-caret" aria-expanded="false" data-bs-toggle="dropdown"><span className="icon"><span className="feather-icon"><FeatherIcon icon="more-vertical" /></span></span></button>
+                                                                     <div className="dropdown-menu dropdown-menu-end">
+                                                                         <a className="dropdown-item" href="edit-contact.html"><span className="feather-icon dropdown-icon"><FeatherIcon icon="list" /><FeatherIcon icon="edit" /></span><span>Edit Contact</span></a>
+                                                                         <a className="dropdown-item" href="#"><span className="feather-icon dropdown-icon"><FeatherIcon icon="list" /><i data-feather="trash-2"></i></span><span>Delete</span></a>
+                                                                         <a className="dropdown-item" href="#"><span className="feather-icon dropdown-icon"><FeatherIcon icon="list" /><i data-feather="copy"></i></span><span>Duplicate</span></a>
+                                                                         <div className="dropdown-divider"></div>
+                                                                         <h6 className="dropdown-header dropdown-header-bold">Change Labels</h6>
+                                                                         <a className="dropdown-item" href="#">Design</a>
+                                                                         <a className="dropdown-item" href="#">Developer</a>
+                                                                         <a className="dropdown-item" href="#">Inventory</a>
+                                                                         <a className="dropdown-item" href="#">Human Resource</a>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                         </td>
+                                                     </tr>
+                                                     ))}
+                                                     
+                                                 </tbody>
+                                                 )}
+												   
 												   
 												   
 												   
