@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect,useRef } from "react";
 import FeatherIcon from 'feather-icons-react';
 
-export default function Clients() {
+import Loading from '../Loading';
+import { useTable } from 'react-table';
+import { Modal, Button } from 'react-bootstrap';
+
+
+
+export default function Patients() {
+    const [isOpen, setIsOpen] = useState(false);
+	//-------------------
+    const [showCreateNew, setIsActive] = useState(false);
+    const CreateNew = event => {
+        setIsActive(current => !current);
+    };
+	
+	
+	
+	
   return (
     <div>
    
@@ -12,8 +28,8 @@ export default function Clients() {
 							<header className="contact-header">
 								<div className="d-flex align-items-center">
 									<div className="dropdown">
-										<a className="contactapp-title dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-											<h1>Contacts</h1>
+										<a className="contactapp-title link-dark" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+											<h1>Հաճախորդներ</h1>
 										</a>
 										<div className="dropdown-menu">
 											<a className="dropdown-item" href="#"><span className="feather-icon dropdown-icon"><FeatherIcon icon="users" /></span><span>All Contacts</span></a>
@@ -23,8 +39,9 @@ export default function Clients() {
 											<a className="dropdown-item" href="#"><span className="feather-icon dropdown-icon"><FeatherIcon icon="trash-2" /></span><span>Deleted</span></a>
 										</div>
 									</div>
+									{/*
 									<div className="dropdown ms-3">
-										<button className="btn btn-sm btn-outline-secondary flex-shrink-0 dropdown-toggle d-lg-inline-block d-none" data-bs-toggle="dropdown">Create New</button>
+										<button className="btn btn-sm btn-outline-secondary flex-shrink-0 dropdown-toggle d-lg-inline-block d-none" data-bs-toggle="dropdown">Գրանցել հետազոտություն</button>
 										<div className="dropdown-menu">
 											<a className="dropdown-item" href="#">Add New Contact</a>
 											<a className="dropdown-item" href="#">Add New Department</a>
@@ -32,6 +49,42 @@ export default function Clients() {
 											<a className="dropdown-item" href="#">Add New Tag</a>
 										</div>
 									</div>
+									*/}
+									
+									
+									<div className="dropdown ms-3">
+									<button className="btn btn-sm btn-outline-secondary flex-shrink-0 dropdown-toggle d-lg-inline-block d-none" data-bs-toggle="dropdown" onClick={CreateNew}>Գրանցել նոր հաճախորդ</button>
+									<div className={showCreateNew ? 'dropdown-menu show' : 'dropdown-menu'} data-popper-placement="bottom">
+										
+										
+                                        <a href="#" onClick={() => setIsOpen(true)}>
+                                             <span className="feather-icon dropdown-icon"></span><span>Հաճախորդ</span>
+                                        </a>
+										
+										<Modal show={isOpen} size='xl' onHide={() => setIsOpen(false)}>
+										   <Modal.Header closeButton>
+											 <Modal.Title style={{ width: '100%', textAlign: 'center' }}>
+											   Ավելացնել նոր հաճախորդ
+											 </Modal.Title>
+										   </Modal.Header>
+										   <Modal.Body>
+	
+												Modal
+	
+										   </Modal.Body>
+										 </Modal>
+                                        
+                                        {/*
+										<a className="dropdown-item" href="#">Type2</a>
+										<a className="dropdown-item" href="#">Type3</a>
+										<a className="dropdown-item" href="#">Type4</a>
+										*/}
+									</div>
+								</div>
+									
+									
+									
+									
 								</div>
 								<div className="contact-options-wrap">	
 									<a className="btn btn-icon btn-flush-dark flush-soft-hover dropdown-toggle no-caret active" href="#" data-bs-toggle="dropdown"><span className="icon"><span className="feather-icon"><FeatherIcon icon="list" /></span></span></a>

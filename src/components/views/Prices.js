@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Agents() {
+export default function Prices() {
   return (
     <div>
-      Agents:
+      Prices:
     </div>
   )
 }

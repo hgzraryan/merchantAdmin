@@ -20,6 +20,12 @@ const UserAdd = (props) => {
     const [validPwd, setValidPwd] = useState(false);
     const [errMsg, setErrMsg] = useState('');
 
+    const [image,setImage] = useState('')
+    const [imageUrl,setImageUrl] = useState('')
+    const fileReader = new FileReader()
+    fileReader.onloadend = () => {
+        setImageUrl(fileReader.result)
+    }
     //const[roles,setRoles] = useState('')   
 
   
@@ -37,17 +43,55 @@ const UserAdd = (props) => {
 
 
     const handleChangeFile = async(event) => {
-        try{       
+        const image = event.target.files[0];
+        
+        setImage(image);
+        // try{       
 
-            formData.append('image',event.target.files[0])
+        //     formData.append('image',event.target.files[0])
 
-            //const formData = new FormData()
-            // const {data} = await axios.post('/upload', formData)
-            // setImageUrl(data.url)
-            // console.log(data)
-        }catch(err){
-            console.warn(err)
+        //     //const formData = new FormData()
+        //     // const {data} = await axios.post('/upload', formData)
+        //     // setImageUrl(data.url)
+        //     // console.log(data)
+        // }catch(err){
+        //     console.warn(err)
+        // }
+    }
+    useEffect(() => {
+        let fileReader, isCancel = false;
+        if (image) {
+          fileReader = new FileReader();
+          fileReader.onload = (e) => {
+            const { result } = e.target;
+            if (result && !isCancel) {
+              setImageUrl(result)
+            }
+          }
+          fileReader.readAsDataURL(image);
         }
+        return () => {
+          isCancel = true;
+          if (fileReader && fileReader.readyState === 1) {
+            fileReader.abort();
+          }
+        }    
+      }, [image]);
+    const handleDrop = (event) => {
+        event.preventDefault()
+        if (event.stopPropagation)
+       { event.stopPropagation()  }
+        console.log("drop")
+        if(event.dataTransfer.files && event.dataTransfer.files.length){
+            setImage(event.dataTransfer.files[0])
+            fileReader.readAsDataURL(event.dataTransfer.files[0])
+        }
+    }
+    const handleDragEmpty = (event) => {
+        event.preventDefault()
+        if (event.stopPropagation)
+        { event.stopPropagation()  }
+           
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -172,17 +216,24 @@ const UserAdd = (props) => {
                         <option>Editor</option>        
                     </select>
                     <br/>  
-                    <label htmlFor="user_image">
-                        Avatar:
-                    </label>
-                    <button 
-                    className="user_image_btn"
-                    onClick={()=>intupAvatarRef.current.click()}>Load avatar
-                    </button>
+                    
+                    <img
+                    width={'100px'}
+                    height={'100px'}
+                    style={{borderRadius:"8px"}}
+                    onClick={()=>intupAvatarRef.current.click()}
+                    src = {imageUrl ? imageUrl : "logo192.png"}
+                    className = "avatar_upload_preview"
+                    alt = "preview"
+                    onDrop={handleDrop}
+                    onDragEnter={handleDragEmpty}
+                    onDragOver={handleDragEmpty}
+                    />                     
                     <input
                         hidden
                         type="file"
                         id="user_image"
+                        ref={intupAvatarRef}
                         onChange={handleChangeFile}                                        
                     />  
                     <br/>

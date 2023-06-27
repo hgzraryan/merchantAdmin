@@ -2,8 +2,8 @@ import Register from './components/Register';
 import Login from './components/Login';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Home from './components/Home';
-import Users from './components/Users';
-import Layout from './components/Layout';
+import Users from './components/views/Users';
+import Layout from './components/layouts/Layout';
 import Editor from './components/Editor';
 import Admin from './components/Admin';
 import UserAdd from './components/UserAdd';
@@ -15,9 +15,10 @@ import RequireAuth from './components/RequireAuth';
 import PersistLogin from './components/PersistLogin';
 import MainTemplate from './components/layouts/MainTemplate';
 
-import Clients from './components/views/Clients';
+import Patients from './components/views/Patients';
 import Agents from './components/views/Agents';
 import Organizations from './components/views/Organizations';
+import Prices from './components/views/Prices';
 
 import { Routes, Route } from 'react-router-dom';
 //import React, { useState, useEffect } from "react";
@@ -55,9 +56,10 @@ function App() {
               <Route index element={<Home />} />
               <Route path="agents" element={<Agents />} />
               <Route path="organizations" element={<Organizations />} />
+			  <Route path="prices" element={<Prices />} />
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-                <Route path="clients" element={<Clients />} />
+                <Route path="patients" element={<Patients />} />
               </Route>
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>

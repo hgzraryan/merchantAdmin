@@ -1,35 +1,95 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useNavigate, useLocation } from "react-router-dom";
 import FeatherIcon from 'feather-icons-react';
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../LoadingSpinner";
 import ReactPaginate from "react-paginate"
+import MissingAvatar from "../../dist/img/Missing.svg"
 
 
-
-import Loading from './Loading';
+import Loading from '../Loading';
 import { useTable } from 'react-table';
 import { Modal, Button } from 'react-bootstrap';
 
 
-	
-  
+
+
 
 
 const Users = () => {
-    const [users, setUsers] = useState([]);
-    const [usercount, setUserCount] = useState([]);
+	const [users, setUsers] = useState([]);
+	const [currentPage,setCurrentPage] =  useState(1)
+	const [usersPerPage,setUsersPerPage] =  useState(12)
+	const [hasMore,setHasMore] = useState(true)
     const axiosPrivate = useAxiosPrivate();
     const navigate = useNavigate();
     const location = useLocation();
+	const [image,setImage] = useState('')
+	const [imageUrl,setImageUrl] = useState(MissingAvatar)
+	const intupAvatarRef = useRef(null)
+	const imageMimeType = /image\/(png|jpg|jpeg)/i;
+	const fileReader = new FileReader()
+	
+	fileReader.onloadend = () => {
+		setImageUrl(fileReader.result)
+	}
+	
+	const handleChangeFile = async(event) => {
+		const image = event.target.files[0];
+		if (!image.type.match(imageMimeType)) {
+			alert("Image mime type is not valid");
+			return;
+		  }
+		setImage(image);
+		// try{       
+	
+		//     formData.append('image',event.target.files[0])
+	
+		//     //const formData = new FormData()
+		//     // const {data} = await axios.post('/upload', formData)
+		//     // setImageUrl(data.url)
+		//     // console.log(data)
+		// }catch(err){
+		//     console.warn(err)
+		// }
+	}
+	useEffect(() => {
+		let fileReader, isCancel = false;
+		if (image) {
+		  fileReader = new FileReader();
+		  fileReader.onload = (e) => {
+			const { result } = e.target;
+			if (result && !isCancel) {
+			  setImageUrl(result)
+			}
+		  }
+		  fileReader.readAsDataURL(image);
+		}
+		return () => {
+		  isCancel = true;
+		  if (fileReader && fileReader.readyState === 1) {
+			fileReader.abort();
+		  }
+		}    
+	  }, [image]);
+	const handleDrop = (event) => {
+		event.preventDefault()
+		if (event.stopPropagation)
+	   { event.stopPropagation()  }
+		console.log("drop")
+		if(event.dataTransfer.files && event.dataTransfer.files.length){
+			setImage(event.dataTransfer.files[0])
+			fileReader.readAsDataURL(event.dataTransfer.files[0])
+		}
+	}
+	const handleDragEmpty = (event) => {
+		event.preventDefault()
+		if (event.stopPropagation)
+		{ event.stopPropagation()  }
+		   
+	}
 
-
-
-
-
-    const [currentPage,setCurrentPage] =  useState(1)
-    const [usersPerPage] =  useState(8)
 
     const pagesVisited = currentPage * usersPerPage
     const currentUsers = users.slice(pagesVisited,pagesVisited+usersPerPage)
@@ -44,12 +104,12 @@ const Users = () => {
             try {
                 const response = await axiosPrivate.post('/users', {
                     signal: controller.signal,
-					page:1,
-					onPage:1
+					page:currentPage,
+					onPage:usersPerPage
                 });
                 console.log(response);
-                isMounted && setUsers(response.data.jsonString);
-                isMounted && setUserCount(response.data.count);
+                isMounted && setUsers(prevUsers => [...prevUsers,...response.data.jsonString]);
+				setCurrentPage(prev => prev+1)
             } catch (err) {
                 console.error(err);
                 navigate('/login', { state: { from: location }, replace: true });
@@ -63,14 +123,13 @@ const Users = () => {
             controller.abort();
         }
     }, [])
-	
+
 	
 	
 
 
 	
-	
-const generateData = (start, length = 20) =>
+const generateData = (start, length = 1) =>
   Array.from({ length }).map((_, i) => ({
     username: 'hgzraryan',
     firstname: 'Hartyun',
@@ -79,24 +138,26 @@ const generateData = (start, length = 20) =>
     roles: 'dded',
   }));
 	
-	console.log(generateData);
+	//console.log(generateData);
 	
-	
-	 const getUsers = async () => {
-            try {
-                const response = await axiosPrivate.post('/users', {
-                    
-					page:1,
-					onPage:1
-                });
-                console.log(response);
-                setUsers(response.data.jsonString);
-                setUserCount(response.data.count);
-            } catch (err) {
-                console.error(err);
-                navigate('/login', { state: { from: location }, replace: true });
-            }
-        }
+	const getUsers = async () => {
+		try {
+			const response = await axiosPrivate.post('/users', {
+				page:currentPage,
+				onPage:usersPerPage
+			});
+			setTimeout(() => {
+				if(response.data.jsonString.length === 0 || response.data.jsonString.length < 12){
+					setHasMore(false)
+				}
+				setUsers(prevUsers => [...prevUsers,...response.data.jsonString]);
+				setCurrentPage(prev => prev+1)
+			}, 500);
+		} catch (err) {
+			console.error(err);
+			navigate('/login', { state: { from: location }, replace: true });
+		}
+	}
 
 	
 	
@@ -144,10 +205,9 @@ const generateData = (start, length = 20) =>
 
 
 
-
      const [items, setItems] = useState(generateData(0));
      const [isOpen, setIsOpen] = useState(false);
-   
+   /*
      const fetchMoreData = () => {
        setTimeout(() => {
          setItems((prevItems) => [
@@ -156,9 +216,14 @@ const generateData = (start, length = 20) =>
          ]);
        }, 1500);
      };
-   
+	 */
+	 
      const columns = React.useMemo(
        () => [
+	     {
+           Header: ' ',
+           //accessor: 'select',
+         },
          {
            Header: 'Username',
            accessor: 'username',
@@ -246,7 +311,27 @@ const generateData = (start, length = 20) =>
 																	
 																	<div className="text-center mt-5">
 																		<div className="dropify-circle edit-img">
-																			<input type="file"  className="dropify-1" data-default-file="dist/img/avatar2.jpg"/>
+																		<img
+                    														width={'100px'}
+                    														height={'100px'}
+                    														style={{borderRadius:"50%", cursor:"pointer"}}
+                    														onClick={()=>intupAvatarRef.current.click()}
+                    														src = {imageUrl}
+                    														className = "avatar_upload_preview"
+                    														alt = "preview"
+																			access
+                    														onDrop={handleDrop}
+                    														onDragEnter={handleDragEmpty}
+                    														onDragOver={handleDragEmpty}
+                    													/> 
+																		<input 
+																			hidden 
+																			type="file" 
+																			ref={intupAvatarRef} 
+																			onChange={handleChangeFile} 
+																			className="dropify-1" 
+																			//data-default-file="dist/img/avatar2.jpg"
+																		/>
 																		</div>
 																		<div className="cp-name text-truncate mt-3">Mendaline Shane</div>
 																		<p>No phone calls Always busy</p>
@@ -471,18 +556,18 @@ const generateData = (start, length = 20) =>
                                  </header>
                                  <div className="contact-body">
                                      <div data-simplebar className="nicescroll-bar">
-                                         <div className="contact-list-view" style={{height:'650px', overflow:"scroll"}}>
+                                         <div className="contact-list-view" >
  
 											
 											
 											<div id='scrollableDiv' style={{ height: '80vh', overflow: 'auto' }}>
 											   <InfiniteScroll
-												 dataLength={usercount}
+												 dataLength={users.length}
 												 next={getUsers}
-												 hasMore={true}
+												 hasMore={hasMore}
 												 loader={<Loading />}
 												 scrollableTarget='scrollableDiv'
-												 endMessage={<p>No more data to load.</p>}
+												 endMessage={<p>Տվյալներ չեն հայտնաբերվել բեռնելու համար:</p>}
 											   >
 												 <table  className='table table-striped'>
 												   <thead>

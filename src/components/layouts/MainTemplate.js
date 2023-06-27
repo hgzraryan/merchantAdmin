@@ -1,13 +1,17 @@
-import { useNavigate, Link, Outlet } from "react-router-dom";
+import { useNavigate, Link, Outlet, useLocation } from "react-router-dom";
 import useLogout from "../../hooks/useLogout";
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import LoadingSpinner from "../LoadingSpinner";
 
 
 
 const MainTemplate = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const logout = useLogout();
+    const [count, countUsers] = useState();
+    const axiosPrivate = useAxiosPrivate();
 
     //-------------------
     const [isActive, setIsActive] = useState(false);
@@ -32,7 +36,30 @@ const MainTemplate = () => {
    //--------------------------------------
 
 
+	useEffect(() => {
+        let isMounted = true;
+        const controller = new AbortController();
 
+        const getUsersCount = async () => {
+            try {
+                const response = await axiosPrivate.get('/usersCount', {
+                    signal: controller.signal
+                });
+                //console.log(response.data);
+				isMounted && countUsers(response.data);
+            } catch (err) {
+                console.error(err);
+                navigate('/login', { state: { from: location }, replace: true });
+            }
+        }
+
+        getUsersCount();
+
+        return () => {
+            isMounted = false;
+            controller.abort();
+        }
+    }, [])
 	
 
 
@@ -435,7 +462,7 @@ const MainTemplate = () => {
                               
                               <ul className="navbar-nav flex-column">
                                   <li className="nav-item">
-                                      <Link className="nav-link" to="./clients">
+                                      <Link className="nav-link" to="./patients">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
                                                 <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -526,7 +553,7 @@ const MainTemplate = () => {
                                       </ul>	
                                   </li>	
                                   <li className="nav-item">
-                                      <Link className="nav-link" to="email.html">
+                                      <Link className="nav-link" to="prices">
                                           <span className="nav-icon-wrap">
                                               <span className="svg-icon">
                                               <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 64 64">
@@ -575,7 +602,7 @@ const MainTemplate = () => {
                                       <Link className="nav-link" to="/users">
                                           <span className="nav-icon-wrap position-relative">
                                               <span className="svg-icon">
-                                              <span className="badge badge-sm badge-primary badge-sm badge-pill position-top-end-overflow">3</span>
+                                              <span className="badge badge-sm badge-primary badge-sm badge-pill position-top-end-overflow">{count}</span>
                                               <svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <title/>
                                                     <g id="Complete">
