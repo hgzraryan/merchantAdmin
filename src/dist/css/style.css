@@ -90979,7 +90979,11 @@ Project:	Jampack
   color:#fff!important;
 }
 
-/*----------------------------------------------------------------*/
+/*-------------------Multiselect Dropdown---------------------*/
+.chips{
+  background-color: green;
+}
+/*----------------------------------------*/
 
 @media (max-width: 991px) {
   .integrationsapp-wrap .integrationsapp-sidebar {

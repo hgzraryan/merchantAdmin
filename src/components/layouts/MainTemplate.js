@@ -33,6 +33,11 @@ const MainTemplate = () => {
 	const dropDownMenu1Click = event => {
 		dropDownMenu1IsActive(current => !current);
 	};
+	
+	const [dropDownMenu2, dropDownMenu2IsActive] = useState(true);
+	const dropDownMenu2Click = event => {
+		dropDownMenu2IsActive(current => !current);
+	};
    //--------------------------------------
 
 
@@ -472,7 +477,7 @@ const MainTemplate = () => {
                                                 </svg>
                                               </span>
                                           </span>
-                                          <span className="nav-link-text">Հաճախորդներ</span>
+                                          <span className="nav-link-text">Հիվանդներ</span>
                                       </Link>
                                   </li>	
                                   <li className="nav-item">
@@ -552,6 +557,7 @@ const MainTemplate = () => {
                                           </li>	
                                       </ul>	
                                   </li>	
+								  {/*
                                   <li className="nav-item">
                                       <Link className="nav-link" to="prices">
                                           <span className="nav-icon-wrap">
@@ -593,7 +599,7 @@ const MainTemplate = () => {
                                           <span className="nav-link-text">Գնացուցակ</span>
                                       </Link>
                                   </li>
-
+								  */}
 
 
 
@@ -715,6 +721,7 @@ const MainTemplate = () => {
                                           </li>	
                                       </ul>	
                                   </li>
+								  {/*
                                   <li className="nav-item">
                                       <Link className="nav-link" to="gallery.html">
                                           <span className="nav-icon-wrap">
@@ -731,6 +738,7 @@ const MainTemplate = () => {
                                           <span className="nav-link-text">Զեղչի քարտեր</span>
                                       </Link>
                                   </li>
+								  */}
                                   <li className="nav-item">
                                       <Link className="nav-link" to="#" data-bs-toggle="collapse" data-bs-target="#dash_integ">
                                           <span className="nav-icon-wrap">
@@ -753,6 +761,55 @@ const MainTemplate = () => {
                                                   </li>
                                                   <li className="nav-item">
                                                       <a className="nav-link" href="integrations.html"><span className="nav-link-text">Integrations</span></a>
+                                                  </li>
+                                              </ul>	
+                                          </li>	
+                                      </ul>	
+                                  </li>
+								  <li className="nav-item">
+                                      <Link className="nav-link" to="#" data-bs-toggle="collapse" onClick={dropDownMenu2Click} data-bs-target="#dash_integ">
+                                          <span className="nav-icon-wrap">
+                                              <span className="svg-icon">
+                                                <svg fill="#000000" height="800px" width="800px"  id="Capa_1" viewBox="0 0 482.568 482.568">
+													<g>
+														<g>
+															<path d="M116.993,203.218c13.4-1.8,26.8,2.8,36.3,12.3l24,24l22.7-22.6l-32.8-32.7c-5.1-5.1-5.1-13.4,0-18.5s13.4-5.1,18.5,0
+																l32.8,32.8l22.7-22.6l-24.1-24.1c-9.5-9.5-14.1-23-12.3-36.3c4-30.4-5.7-62.2-29-85.6c-23.8-23.8-56.4-33.4-87.3-28.8
+																c-4.9,0.7-6.9,6.8-3.4,10.3l30.9,30.9c14.7,14.7,14.7,38.5,0,53.1l-19,19c-14.7,14.7-38.5,14.7-53.1,0l-31-30.9
+																c-3.5-3.5-9.5-1.5-10.3,3.4c-4.6,30.9,5,63.5,28.8,87.3C54.793,197.518,86.593,207.218,116.993,203.218z"/>
+															<path d="M309.193,243.918l-22.7,22.6l134.8,134.8c5.1,5.1,5.1,13.4,0,18.5s-13.4,5.1-18.5,0l-134.8-134.8l-22.7,22.6l138.9,138.9
+																c17.6,17.6,46.1,17.5,63.7-0.1s17.6-46.1,0.1-63.7L309.193,243.918z"/>
+															<path d="M361.293,153.918h59.9l59.9-119.7l-29.9-29.9l-119.8,59.8v59.9l-162.8,162.3l-29.3-29.2l-118,118
+																c-24.6,24.6-24.6,64.4,0,89s64.4,24.6,89,0l118-118l-29.9-29.9L361.293,153.918z"/>
+														</g>
+													</g>
+												</svg>
+                                              </span>
+                                          </span>
+                                          <span className="nav-link-text">Կարգաբերումներ</span>
+                                      </Link>
+                                      <ul id="dash_integ" className={dropDownMenu2 ? 'nav flex-column collapse  nav-children' : 'nav flex-column collapse  nav-children show'} >
+                                          <li className="nav-item">
+                                              <ul className="nav flex-column">
+                                                  <li className="nav-item">
+													  <Link className="nav-link" to="./settings/prices">
+														  <span className="nav-link-text">Գնացուցակներ</span>
+													  </Link>
+                                                  </li>
+                                                  <li className="nav-item">
+													  <Link className="nav-link" to="./settings/discountCards">
+														  <span className="nav-link-text">Զեղչի քարտեր</span>
+													  </Link>
+                                                  </li>
+                                                  <li className="nav-item">
+                                                       <Link className="nav-link" to="./settings/reagents">
+														  <span className="nav-link-text">Ռեագենտներ</span>
+													  </Link>
+                                                  </li>
+												   <li className="nav-item">
+                                                       <Link className="nav-link" to="./settings/equipments">
+														  <span className="nav-link-text">Սարքավորումներ</span>
+													  </Link>
                                                   </li>
                                               </ul>	
                                           </li>	

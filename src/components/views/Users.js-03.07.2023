@@ -6,21 +6,19 @@ import FeatherIcon from 'feather-icons-react';
 import LoadingSpinner from "../LoadingSpinner";
 import ReactPaginate from "react-paginate"
 import MissingAvatar from "../../dist/img/Missing.svg"
-import Multiselect from 'multiselect-react-dropdown';
-import axios from './../../api/axios';
+
+
 import Loading from '../Loading';
 import { useTable } from 'react-table';
 import { Modal, Button } from 'react-bootstrap';
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-const MOBILE_REGEX = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
-const REGISTER_URL = '/register';
+
+
+
+
 
 const Users = () => {
 	const [users, setUsers] = useState([]);
-	const [rolesArray,setRolesArray] = useState([])
 	const [currentPage,setCurrentPage] =  useState(1)
 	const [usersPerPage,setUsersPerPage] =  useState(12)
 	const [hasMore,setHasMore] = useState(true)
@@ -32,118 +30,7 @@ const Users = () => {
 	const intupAvatarRef = useRef(null)
 	const imageMimeType = /image\/(png|jpg|jpeg)/i;
 	const fileReader = new FileReader()
-	const multiselectRef  = useRef('')	
-	let roleState = {
-    options: [{name: 'Collaborator', id: 1},
-	{name: 'Designer', id: 2},
-	{name: 'React Developer', id: 3},
-	{name: 'Promotion', id: 4},
-	{name: 'Advertisement', id: 5},
-]
-};
-/*----------------ADD USER---------------------*/
-const errRef = useRef('');
-const user = useRef('')
-const firstname = useRef('')
-const lastname = useRef('')
-const pwd = useRef('')
-const roles = useRef('')
-
-const [validName, setValidName] = useState(false);
-const [validPwd, setValidPwd] = useState(false);
-const [errMsg, setErrMsg] = useState('');
-
-const formData = new FormData()
-
-useEffect(() => {
-    setValidName(USER_REGEX.test(user.current));
-}, [user])
-
-useEffect(() => {
-    setValidPwd(PWD_REGEX.test(pwd.current));
-}, [pwd])
-const handleSubmit = async (e) => {
-	e.preventDefault();
-
-	//if button enabled with JS hack
-	// const v1 = USER_REGEX.test(user.current);
-	// const v2 = PWD_REGEX.test(pwd.current);
-	// if (!v1 || !v2) {
-	// 	setErrMsg("Invalid Entry");
-	// 	return;
-	// }     
-
-	const newUser = {
-		user:user.current, 
-		pwd:pwd.current,
-		firstname:firstname.current,
-		lastname:lastname.current,
-		roles:roles.current
-	}        
 	
-	formData.append('text', JSON.stringify(newUser))
-	formData.append('image',image)
-	try {
-		const response = await axios.post(REGISTER_URL,
-			formData,
-			{
-				headers: {  "Content-Type": "multipart/form-data", },
-				withCredentials: true
-			}
-		);
-		//console.log(JSON.stringify(response?.data));
-		//console.log(JSON.stringify(response))
-
-		//clear state and controlled inputs
-		debugger
-		firstname.current='';
-		lastname.current='';
-		pwd.current='';
-		user.current='';
-		user.roles='';
-		
-	} catch (err) {
-		if (!err?.response) {
-			setErrMsg('No Server Response');
-		} else if (err.response?.status === 409) {
-			setErrMsg('Username Taken');
-		} else {
-			setErrMsg(' Failed')
-		}
-	}
-
-}
-const onRoleSelect = (data) =>{
-	let rolesArr = []
-	for(let role of data){
-		rolesArr.push(Object.values(role)[0])
-	}
-	setRolesArray(prev => (prev = rolesArr))
-}
-const onRoleDelete = (data) =>{
-	let rolesArr = []
-	for(let role of data){
-		rolesArr.push(Object.values(role)[0])
-	}
-	setRolesArray(prev => (prev = rolesArr))
-	
-	//reset selected options colors
-	const elems = document.querySelectorAll(".chips")
-	elems.forEach(element => {
-		element.classList.remove('chips')
-	});
-}
-const onAdd = (e) => {
-	roles.current = rolesArray
-	//multiselectRef.current.resetSelectedValues()
-	const elems = document.querySelectorAll(".chip")
-	elems.forEach(element => {
-		element.classList.add('chips')
-	});
-
-	
-}
-/*----------------ADD USER END---------------------*/
 	fileReader.onloadend = () => {
 		setImageUrl(fileReader.result)
 	}
@@ -154,13 +41,18 @@ const onAdd = (e) => {
 			alert("Image mime type is not valid");
 			return;
 		  }
-		  debugger
 		setImage(image);
-		 try{ 
-		    formData.append('image',event.target.files[0])
-		 }catch(err){
-		     console.warn(err)
-		 }
+		// try{       
+	
+		//     formData.append('image',event.target.files[0])
+	
+		//     //const formData = new FormData()
+		//     // const {data} = await axios.post('/upload', formData)
+		//     // setImageUrl(data.url)
+		//     // console.log(data)
+		// }catch(err){
+		//     console.warn(err)
+		// }
 	}
 	useEffect(() => {
 		let fileReader, isCancel = false;
@@ -185,6 +77,7 @@ const onAdd = (e) => {
 		event.preventDefault()
 		if (event.stopPropagation)
 	   { event.stopPropagation()  }
+		console.log("drop")
 		if(event.dataTransfer.files && event.dataTransfer.files.length){
 			setImage(event.dataTransfer.files[0])
 			fileReader.readAsDataURL(event.dataTransfer.files[0])
@@ -212,7 +105,7 @@ const onAdd = (e) => {
                 const response = await axiosPrivate.post('/users', {
                     signal: controller.signal,
 					page:currentPage,
-					onPage:Math.round(window.innerHeight/100*1.5)
+					onPage:usersPerPage
                 });
                 console.log(response);
                 isMounted && setUsers(prevUsers => [...prevUsers,...response.data.jsonString]);
@@ -244,6 +137,8 @@ const generateData = (start, length = 1) =>
     email: 'hgzraryan@yandex.ru',
     roles: 'dded',
   }));
+	
+	//console.log(generateData);
 	
 	const getUsers = async () => {
 		try {
@@ -397,11 +292,12 @@ const generateData = (start, length = 1) =>
 									<div className={showCreateNew ? 'dropdown-menu show' : 'dropdown-menu'} data-popper-placement="bottom">
 										
 										
-
+                             
 										
-										<a className="dropdown-item" href="#" onClick={() => setIsOpen(true)}>
+										 <a className="dropdown-item" href="#" onClick={() => setIsOpen(true)}>
                                              <span className="feather-icon dropdown-icon"></span><span>Աշխատակից</span>
                                         </a>
+										
 										
 										<Modal show={isOpen} size='xl' onHide={() => setIsOpen(false)}>
 										   <Modal.Header closeButton>
@@ -426,6 +322,7 @@ const generateData = (start, length = 1) =>
                     														src = {imageUrl}
                     														className = "avatar_upload_preview"
                     														alt = "preview"
+																			access
                     														onDrop={handleDrop}
                     														onDragEnter={handleDragEmpty}
                     														onDragOver={handleDragEmpty}
@@ -467,34 +364,14 @@ const generateData = (start, length = 1) =>
 																					<div className="row gx-3">
 																						<div className="col-sm-6">
 																							<div className="form-group">
-																								<label className="form-label"  htmlFor="firstname">Անուն</label>
-																								<input 
-																								type="text" 
-																								name="name"
-																								placeholder="Անուն"
-																								id="firstname" 
-																								className="form-control"
-																								autoComplete="off"
-																								value={firstname.current.value}
-																								onChange={(e) => (firstname.current=e.target.value)} 
-																								required 
-																								/>
+																								<label className="form-label">Անուն</label>
+																								<input className="form-control" type="text" value="" placeholder="Անուն" name="name" />
 																							</div>
 																						</div>
 																						<div className="col-sm-6">
 																							<div className="form-group">
-																								<label className="form-label" htmlFor="lastname">Ազգանուն</label>
-																								<input 
-																								type="text" 
-																								name="lastname" 
-																								placeholder="Ազգանուն"
-																								id="lastname" 
-																								className="form-control"
-																								autoComplete="off" 
-																								value={lastname.current.value} 
-																								onChange={(e) => (lastname.current=e.target.value)}
-																								required
-																								/>
+																								<label className="form-label">Ազգանուն</label>
+																								<input className="form-control" type="text" value="" placeholder="Ազգանուն" name="lastname" />
 																							</div>
 																						</div>
 																					</div>
@@ -515,34 +392,14 @@ const generateData = (start, length = 1) =>
 																					<div className="row gx-3">
 																						<div className="col-sm-6">
 																							<div className="form-group">
-																								<label className="form-label" htmlFor="username">Ծածկանուն</label>
-																								<input 
-																								type="text" 
-																								name="username" 
-																								placeholder="Ծածկանուն" 
-																								id="username"
-																								className="form-control" 
-																								autoComplete="off"
-																								value={user?.current.value}
-																								onChange={(e) => (user.current = e.target.value)}
-																								required 
-																								/>
+																								<label className="form-label">Ծածկանուն</label>
+																								<input className="form-control" type="text" value="" placeholder="Ծածկանուն" name="username" />
 																							</div>
 																						</div>
 																						<div className="col-sm-6">
 																							<div className="form-group">
-																								<label className="form-label" htmlFor="password">Ծածկագիր</label>
-																								<input 
-																								type="password" 
-																								name="password" 
-																								placeholder="Ծածկագիր" 
-																								id="password"
-																								className="form-control" 
-																								autoComplete="off"
-																								value={pwd.current.value}
-																								onChange={(e) => (pwd.current = e.target.value)}
-																								required 
-																								/>
+																								<label className="form-label">Ծածկագիր</label>
+																								<input className="form-control" type="password" value="" placeholder="Ծածկագիր" name="password" />
 																							</div>
 																						</div>
 																					</div>
@@ -622,30 +479,17 @@ const generateData = (start, length = 1) =>
 																					<div className="row gx-3">
 																						<div className="col-sm-12">
 																							<div className="form-group">
-																								<Multiselect
-																									options={roleState.options} // Options to display in the dropdown
-																									displayValue="name" // Property name to display in the dropdown options
-																									//selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
-																									onSelect={onRoleSelect} // Function will trigger on select event
-																									onRemove={onRoleDelete} // Function will trigger on remove event
-																									closeOnSelect = {true}
-																									id="input_tags_3"
-																									className="form-control"
-																									ref={multiselectRef}
-																									hidePlaceholder={true}
-																									placeholder = "Select Role"
-																								/>
-																								{/* <select id="input_tags_3" className="form-control" multiple="multiple">
+																								<select id="input_tags_3" className="form-control" multiple="multiple">
 																									<option selected="selected">Collaborator</option>
 																									<option selected="selected">Designer</option>
 																									<option selected="selected">React Developer</option>
 																									<option selected="selected">Promotion</option>
 																									<option selected="selected">Advertisement</option>
-																								</select> */}
+																								</select>
 																							</div>
 																						</div>
 																					</div>
-																					<button type="button" className="btn btn-primary float-end" onClick={onAdd} data-bs-dismiss="modal">Add</button>
+																					<button type="button" className="btn btn-primary float-end" data-bs-dismiss="modal">Add</button>
 																				</form>
 																			</div>
 																		</div>
@@ -653,8 +497,8 @@ const generateData = (start, length = 1) =>
 
 
 																	<div className="modal-footer align-items-center">
-																		<button type="button" className="btn btn-secondary" onClick={() => setIsOpen(false)}>Չեղարկել</button>
-																		<button type="button" onClick={handleSubmit} className="btn btn-primary" data-bs-dismiss="modal">Ավելացնել</button>
+																		<button type="button" className="btn btn-secondary">Չեղարկել</button>
+																		<button type="button" className="btn btn-primary" data-bs-dismiss="modal">Ավելացնել</button>
 																	</div>
 																</div>
 																
@@ -785,7 +629,6 @@ const generateData = (start, length = 1) =>
                                                          <td>{user.lastname}</td>
                                                          <td className="text-truncate">{user.email ?? 'test@mail.ru'}</td>
                                                          <td>
-															
                                                              {Object.keys(user.roles).map((role) => 
                                                              <span className={setUserTypeStyle(role)}>{role}</span>   )}
                                                          </td>

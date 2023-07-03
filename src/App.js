@@ -19,6 +19,9 @@ import Patients from './components/views/Patients';
 import Agents from './components/views/Agents';
 import Organizations from './components/views/Organizations';
 import Prices from './components/views/Prices';
+import DiscountCards from './components/views/DiscountCards';
+import Reagents from './components/views/Reagents';
+import Equipments from './components/views/Equipments';
 
 import { Routes, Route } from 'react-router-dom';
 //import React, { useState, useEffect } from "react";
@@ -56,28 +59,24 @@ function App() {
               <Route index element={<Home />} />
               <Route path="agents" element={<Agents />} />
               <Route path="organizations" element={<Organizations />} />
-			  <Route path="prices" element={<Prices />} />
+			  
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
                 <Route path="patients" element={<Patients />} />
+				<Route path="admin/useradd" element={<UserAdd />} />
+				<Route path="users" element={<Users />} />
+				<Route path="admin" element={<Admin />} />
+				<Route path="settings/prices" element={<Prices />} />
+				<Route path="settings/discountCards" element={<DiscountCards />} />
+				<Route path="settings/reagents" element={<Reagents />} />
+				<Route path="settings/equipments" element={<Equipments />} />
               </Route>
 
-              <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-                <Route path="users" element={<Users />} />
-              </Route>
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
                 <Route path="editor" element={<Editor />} />
               </Route>
 
-
-              <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-                <Route path="admin" element={<Admin />} />
-              </Route>
-
-              <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-                <Route path="admin/useradd" element={<UserAdd />} />
-              </Route>
 
               <Route element={<RequireAuth allowedRoles={[ROLES.Editor, ROLES.Admin]} />}>
                 <Route path="lounge" element={<Lounge />} />
