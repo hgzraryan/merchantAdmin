@@ -22,6 +22,7 @@ import Prices from './components/views/Prices';
 import DiscountCards from './components/views/DiscountCards';
 import Reagents from './components/views/Reagents';
 import Equipments from './components/views/Equipments';
+import Researchlists from './components/views/Researchlists';
 
 import { Routes, Route } from 'react-router-dom';
 //import React, { useState, useEffect } from "react";
@@ -70,6 +71,7 @@ function App() {
 				<Route path="settings/discountCards" element={<DiscountCards />} />
 				<Route path="settings/reagents" element={<Reagents />} />
 				<Route path="settings/equipments" element={<Equipments />} />
+				<Route path="settings/researchlists" element={<Researchlists />} />
               </Route>
 
 

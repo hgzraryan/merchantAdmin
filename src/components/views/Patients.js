@@ -563,8 +563,8 @@ const generateData = (start, length = 1) =>
 																								<label className="form-label" htmlFor="address">Հասցե</label>
 																								<input 
 																								type="text" 
-																								name="password" 
-																								placeholder="Ծածկագիր" 
+																								name="address" 
+																								placeholder="Հասցե" 
 																								id="address"
 																								className="form-control" 
 																								autoComplete="off"
@@ -608,7 +608,7 @@ const generateData = (start, length = 1) =>
 																									className="form-control"
 																									ref={multiselectRef}
 																									hidePlaceholder={true}
-																									placeholder = "Select Role"
+																									placeholder = "Հետազոտություններ"
 																									groupBy = "category"
 																								/>
 																								{/* <select id="input_tags_3" className="form-control" multiple="multiple">
@@ -621,7 +621,7 @@ const generateData = (start, length = 1) =>
 																							</div>
 																						</div>
 																					</div>
-																					<button type="button" className="btn btn-primary float-end" onClick={onAdd} data-bs-dismiss="modal">Add</button>
+																					<button type="button" className="btn btn-primary float-end" onClick={onAdd} data-bs-dismiss="modal">Ավելացնել</button>
 																				</form>
 																			</div>
 																		</div>

@@ -811,6 +811,11 @@ const MainTemplate = () => {
 														  <span className="nav-link-text">Սարքավորումներ</span>
 													  </Link>
                                                   </li>
+												   <li className="nav-item">
+                                                       <Link className="nav-link" to="./settings/researchlists">
+														  <span className="nav-link-text">Հետ․ տեսակներ</span>
+													  </Link>
+                                                  </li>
                                               </ul>	
                                           </li>	
                                       </ul>	
