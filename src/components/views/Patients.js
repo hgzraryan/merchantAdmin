@@ -13,6 +13,9 @@ import { useTable } from 'react-table';
 import { Modal, Button } from 'react-bootstrap';
 import { Editor } from '@tinymce/tinymce-react';
 
+import ReactToPrint from 'react-to-print'
+import {ComponentToPrint} from './../ComponentToPrint'
+
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -95,6 +98,27 @@ const log = () => {
    console.log(editorRef.current.getContent());
  }
 };
+/*------------------------------------------------*/
+
+
+/*------------------ print component --------------------*/
+const ComponentToPrintWrapper = ({ user }) => { // 1.
+	const componentRef = useRef(); // 2.
+  
+	return (
+	  <div style={{ display: "flex" }}>
+	
+		<ReactToPrint
+		  trigger={() => <a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Archive" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="printer" /></span></span></a>}
+		  content={() => componentRef.current}
+		/>
+		<div style={{display:'none'}}>
+
+		<ComponentToPrint ref={componentRef} value={user} />
+		</div>
+	  </div>
+	);
+  };
 /*------------------------------------------------*/
 
 
@@ -703,6 +727,7 @@ const generateData = (start, length = 1) =>
 									</span>
 								</a>
 								<div className="dropdown-menu dropdown-menu-end">
+									
 									<a className="dropdown-item active" href="contact.html"><span className="feather-icon dropdown-icon"><FeatherIcon icon="list" /></span><span>List View</span></a>
 									<a className="dropdown-item" href="contact-cards.html"><span className="feather-icon dropdown-icon"><FeatherIcon icon="grid" /></span><span>Grid View</span></a>
 									<a className="dropdown-item" href="#"><span className="feather-icon dropdown-icon"><FeatherIcon icon="server" /></span><span>Compact View</span></a>
@@ -813,9 +838,16 @@ const generateData = (start, length = 1) =>
                                                          <td>
                                                              <div className="d-flex align-items-center">
                                                                  <div className="d-flex">
-                                                                     <a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Archive" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="archive" /></span></span></a>
+                                                                     
+                                                                     <ComponentToPrintWrapper key={i} user={user} />
+																	 
+																	 
+																	 
+																	{/*
+																	<a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Archive" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="archive" /></span></span></a>
                                                                      <a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Edit" href="edit-contact.html"><span className="icon"><span className="feather-icon"><FeatherIcon icon="edit" /></span></span></a>
                                                                      <a className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover del-button" data-bs-toggle="tooltip" data-placement="top" title="" data-bs-original-title="Delete" href="#"><span className="icon"><span className="feather-icon"><FeatherIcon icon="trash" /></span></span></a>
+																	*/}
                                                                  </div>
                                                                  <div className="dropdown">
                                                                      <button className="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover dropdown-toggle no-caret" aria-expanded="false" data-bs-toggle="dropdown"><span className="icon"><span className="feather-icon"><FeatherIcon icon="more-vertical" /></span></span></button>
